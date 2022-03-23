@@ -1,0 +1,73 @@
+/* .form-control{
+    width:240px;
+    display:block;
+    margin-right:auto;
+    margin-left:auto;
+    background:#7a3100;
+    color:#fff;
+} */
+.mid-lower-text1
+{
+    padding-top: 50px;
+   justify-content: center;
+}
+.para1 > p{
+    text-align: center;
+    color:white;
+    font-weight: 600;
+    font-size:30px;
+    margin-bottom: 0;
+}
+
+.mid-lower-para2 > p{
+    padding: 0 150px;
+    text-align: center;
+    color:rgba(209, 199, 199, 0.89);
+    font-size: 14px;
+    margin-top: 50px;
+}
+
+.title{
+    color:#ff6600;
+    text-align:center;
+    padding-top: 50px;
+    padding-top: 40px;
+}
+
+
+.floating-card-images
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-bottom: 50px;
+}
+.floating-card
+{
+    height: auto;
+    padding: 0 120px;
+}
+.floating-card-para
+{
+    display: block;
+    margin: 40px 0;
+}
+
+.floating-card-images > div >img{
+    height: 110px;
+    width: 170px;
+}
+
+@media (max-width:768px){
+    .floating-card{
+        padding: 20px;
+    }
+
+    .floating-card-images{
+        justify-content: center;
+    }
+
+    .mid-lower-para2 > p{
+        padding: 0;
+    }
+}

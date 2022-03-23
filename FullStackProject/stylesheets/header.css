@@ -1,0 +1,129 @@
+.header-upper-wrapper{
+    background-color:#5E2600;
+}
+.header-upper{
+    padding: 20px 0px;
+    position: relative;
+}
+
+.header-upper > .row{
+    flex-wrap: nowrap;
+} 
+
+
+/* #photo1{
+    height: 120px;
+    width: 100px;
+    margin-left: 100px;
+}
+#photo2{
+    height: 120px;
+    width: 100px;
+    margin-left: 100px;
+} */
+#header-photo1{
+    position:absolute;
+    margin-top:-20px;
+    margin-left: -30px;
+    z-index: 100;
+    width: 100px;
+    height: 130px;
+    padding:0px;
+}
+#header-photo1 img{
+    width: 100%;
+    height: 100%;  
+}
+#minister-photo{
+    position:absolute;
+    width: 200px;
+    right: 50px;
+    margin-top: 35px;
+    z-index: 100;
+}
+#minister-photo img{
+    width: 100%;
+    height: 100%;
+}
+.header-title img{
+    width: 80%;
+    height: 95%;
+}
+.header-title{
+    margin-left: 80px;
+}
+.header-name{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    color: white;
+    font-style:bold;
+    font-size: 20px;
+    font-weight: 900;
+}
+.header-helpline{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-style:bold;
+    font-size: small;
+}
+.navbar-nav > a{
+    text-decoration: none;
+    padding-left: 20px;
+    padding-right:20px ;
+    color: forestgreen; 
+    border-right: 0.5px solid grey;   
+    font-weight: 500;
+
+}
+.navbar-nav > a:last-child{
+    border-right: none;
+}
+.navbar-nav > a:hover{
+    color: red;
+}
+
+#navbarNavAltMarkup{
+    padding-left: 40px;
+}
+
+@media (max-width : 768px){
+    #header-photo1{
+        width: 60px;
+        height: 70px;
+        margin: 0;
+        position: relative;
+        left: 10px;
+    }
+    #minister-photo{
+        position: absolute;
+        margin: 0px;
+        width: 140px;
+        height: 75px;
+        right: 0;
+        bottom: 10px;
+       
+    }
+
+    .header-upper{
+        padding-bottom: 10px;
+    }
+
+    .header-upper > .row{
+        flex-wrap: wrap;
+    } 
+
+    .header-title{
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+
+    .header-name{
+        justify-content: center;
+       
+    }
+}

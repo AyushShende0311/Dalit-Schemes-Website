@@ -1,0 +1,330 @@
+#main-lower{
+    padding: 50px;
+}
+
+
+.main-lower-title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-lower-title > p{
+    text-align: justify;
+}
+
+.main-lower-title{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.main-lower-title > p{
+    margin: 0px;
+    font-size: 2.5rem;
+    font-weight: 500;
+    word-spacing: 0.2rem;
+    padding-bottom: 5px;
+    color: #00665F;
+}
+.main-lower-form{
+    display: flex;
+    align-items: center;
+    padding: 20px 120px;
+}
+.main-lower-form > ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content:space-evenly;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0px;
+}
+.main-lower-checkbox{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-basis: 23%;
+
+    margin: 1%;
+    padding: 10px;
+    border: 1px rgba(128, 128, 128, 0.333)  solid;
+}
+
+
+.main-lower-checkbox > label{
+    margin-left: 20%;
+    color: red;
+    font-weight: bold; 
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.main-lower-checkbox > input[type="checkbox"]{
+    height: 20px;
+    width: 20px;
+    margin-left: 10px;
+    /* border:1px solid red;
+    color:red;
+    background-color: red; */
+}
+.jumbotron-wrapper
+{
+    background-image: url("../Assets/images/jumbotron_image.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.jumbotron
+{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 70vh;
+    max-height: 600px;
+    
+}
+
+.jumbotron > div{
+    
+    margin: 10%;
+    margin-top:40px;
+}
+
+.jumbotron > div > div
+{
+    display:inline-block;
+    padding: 5px;
+    margin-bottom: 5px;
+    background-color: rgb(245, 91, 35);
+}
+.jumbotron > div > div > p
+{
+    color: white;
+    margin:0 5px;
+    font-weight: 900;
+    font-size: 1.6rem;
+}
+.main-mid
+{
+    background-color: #5E2600;
+}
+
+.floating-card-wrapper
+{
+    position: relative;
+}
+
+
+
+.floating-card
+{
+    background-color: white;
+    position: relative;
+    z-index:100;
+    top: -120px;
+    padding-bottom: 64px;
+    min-width:100%;
+}
+
+.below-floating-card{
+    position: relative;
+    top: -100px;
+}
+
+.floating-card-info 
+{
+    padding:60px;
+}
+
+.floating-card-info-right{
+    overflow: hidden;
+    max-height: 150px;
+}
+
+
+.right-arrow{
+    position: absolute;
+    bottom: 30px;
+    right: 75px;
+}
+
+.right-arrow  img{
+    width: 64px;
+    height: 64px;
+}
+
+.mid-floating-text1{
+    font-size: 20px;
+    font-weight: 600;
+    color: rgb(245, 91, 35)
+}
+.mid-floating-text2{
+    font-size: 30px;
+    color: #006657;
+    font-weight: 500;
+}
+
+.mid-lower-text{
+    display:flex;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+#title1{
+    color: #FCC996;
+    font-size: 20px;
+    font-weight: 600;
+}
+#title2{
+    color: #FCC996;
+    font-size: 20px;
+    font-weight: 600;
+}
+#title3{
+    color: #FCC996;
+    font-size: 20px;
+    font-weight: 600;
+}
+.mid-lower-text1{
+    display: flex;
+}
+.main-lower-title2{
+    padding: 10px 175px;
+}
+#book{
+    margin-top:25px ;
+    width: 75px;
+    height: 75px;
+}
+#title1-para{
+    color: white;
+    display: block;
+}
+#para1{
+    display: block;
+    margin-top: 40px;
+    padding-left: 15px;
+}
+#title2-para{
+    color: white;
+    display: block;
+}
+#para2{
+    display: block;
+    margin-top: 40px;
+    padding-left: 15px;
+}
+#rope{
+    margin-top:25px ;
+    width: 75px;
+    height: 75px;
+}
+.mid-lower-text2{
+    display: flex;
+}
+#title3-para{
+    color: white;
+    display: block;
+}
+#para3{
+    display: block;
+    margin-top: 40px;
+    padding-left: 15px;
+}
+#lifeline{
+    margin-top:25px ;
+    width: 75px;
+    height: 75px;
+}
+.mid-lower-text3{
+    display: flex;
+}
+
+@media (max-width:768px){
+
+    .jumbotron.container-lg{
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 0;
+        padding-top: 30%;
+        height: 50vh;
+        
+    }
+
+    .jumbotron > div{
+        margin: 0;
+    }
+
+    .jumbotron > div > div > p
+    {
+        font-size: 1rem;
+    }
+
+    .main-mid > .container-lg
+    {
+        padding: 0;
+    }
+
+    .floating-card{
+        padding-bottom: 94px;
+    }
+
+   
+    
+    .right-arrow  img{
+        width: 64px;
+        height: 64px;
+    }
+
+    .floating-card-info 
+    {
+        padding: 40px;
+
+    }
+
+    .mid-floating-text1{
+        font-size: 1rem;
+    }
+
+    .mid-floating-text2{
+        font-size: 1.5rem;
+    }
+
+    
+ 
+
+    .main-lower-title > p{
+        font-size: 1.7rem;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    #main-lower{
+        padding: 12px;
+        padding-top: 30px;
+    }
+
+    .main-lower-title2{
+        padding: 12px;
+        text-align: justify;
+    }
+    
+    .main-lower-form{
+      
+        padding: 0;
+    }
+
+    /* .main-lower-form > ul {
+
+    } */
+
+    .main-lower-checkbox{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-basis: 450%;
+        border: 1px rgba(128, 128, 128, 0.333)  solid;
+    }
+    
+
+}
