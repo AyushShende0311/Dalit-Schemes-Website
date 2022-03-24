@@ -58,6 +58,25 @@
     width: 170px;
 }
 
+.form-control{
+    width:240px;
+    display:block;
+    margin-right:auto;
+    margin-left:auto;
+    background:#7a3100;
+    color:#fff;
+}
+
+#distAreas{
+    display:none;
+    width:600px;
+    margin-right:auto;
+    margin-left:auto;
+    background:#fefefe;
+    color:#7a3100;
+    padding:20px;
+}
+
 @media (max-width:768px){
     .floating-card{
         padding: 20px;
