@@ -17,8 +17,7 @@
     box-shadow: 0 0 10px 5px rgb(255 221 154);
     -moz-box-shadow: 0 0 10px 5px rgba(255,221,154,1);
     -webkit-box-shadow: 0 0 10px 5px rgb(255 221 154);
-    -o-box-shadow: 0 0 10px 5px rgba(255,221,154,1);
-    git
+    -o-box-shadow: 0 0 10px 5px rgba(255,221,154,1); 
 }
 .nav > li > a {
     position: relative;
@@ -59,8 +58,31 @@ a {
     flex-basis: 30%;
 }
 .floating-buttons-info{
+    position: relative;
     flex-basis: 70%;
 }
 .nav{
     width: 100%;
+}
+
+.floating-buttons-info > div{
+    position: absolute;
+    min-height: 100%;
+    min-width: 100%;
+    display: none;
+   
+}
+
+.floating-buttons-info > div.active{
+    display: block;
+    position: relative;
+}
+
+.floating-buttons-info-images > div > img{
+    width: auto;
+    height: auto;
+}
+
+.floating-buttons-info-images{
+    padding: 30px;
 }
