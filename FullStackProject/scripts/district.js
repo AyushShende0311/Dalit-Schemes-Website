@@ -1,32 +1,27 @@
 
+(()=>{
+    var districts = ["औरंगाबाद","नांदेड","परभणी","लातूर"]
+    var form = document.createElement("form")
+    form.setAttribute("id","frmSelectDistrict")
+    var select = document.createElement("select")
+    select.setAttribute('id',"selDistrict")
+    select.setAttribute("class","form-control")
+    var value = 0
 
-var selectDistrict = document.getElementById("selDistrict");
+    districts.forEach(district=>{
+        var option = document.createElement("option")
+        var txt = document.createTextNode(district)
+        option.appendChild(txt)
+        option.setAttribute("value",value)
+        select.appendChild(option)
+        value += 1
+     })
+     
+     form.appendChild(select)
+
+     var dropdown_wrapper = document.querySelector(".dropdown-wrapper")
+     dropdown_wrapper.insertBefore(form,dropdown_wrapper.children[2])
+
+})()
 
 
-// selectDistrict.onchange(function(){
-//     var selected = selectDistrict. options[selectDistrict.selectedIndex].text;
-//     alert(selected);
-// });
-
-var list = ["a" , "b", "c"];
-selectDistrict.appendChild
-
-selectDistrict.addEventListener("change", ()=>{
-    var selected = selectDistrict.selectedIndex;
-    document.getElementById("distAreas").style.display = "block";
-
-});
-
-// (()=>{
-//     var div = document.createElement("div")
-//     var dropdowns = document.getElementById("frmSelectDistrict")
-//     for(var i=0;i<dropdowns.length;i++){
-//         var openDropDown = dropdowns[i];
-//     }
-
-
-
-//     // var p = document.createElement("p")
-//     // var txtNode = document.createTextNode("Covered \"Nivadak Dalit Vasti Sudhaar\"areas in")
-
-// })
