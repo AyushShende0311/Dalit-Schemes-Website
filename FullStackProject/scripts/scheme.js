@@ -27,3 +27,15 @@ var hideAllTabsInfo = (tabs_info)=>{
         tab_info.classList.remove("active")
     })
 }
+
+(()=>{
+    var li =document.querySelector(".nav > li:first-child")
+    var div = document.querySelector(".floating-buttons-info > div:first-child")
+    li.classList.remove("active")
+    li.classList.add("active")
+    div.classList.remove("active")
+    div.classList.add("active")
+
+})()
+
+
