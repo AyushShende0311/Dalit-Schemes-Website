@@ -1,4 +1,4 @@
-var addHeader = ()=>{
+(()=>{
     var body  = document.querySelector("body")
     var header = `
                 <div class="container-fluid header-wrapper m-0 p-0">
@@ -44,6 +44,5 @@ var addHeader = ()=>{
       `
 
       body.insertAdjacentHTML("afterbegin", header)
-}
+})()
 
-addHeader()

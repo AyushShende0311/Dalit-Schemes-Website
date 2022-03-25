@@ -1,4 +1,4 @@
-var addFooter = ()=>{
+(()=>{
     var body = document.querySelector("body")
     var footer = `
                 <div class="container-fluid footer-container p-0">
@@ -65,6 +65,4 @@ var addFooter = ()=>{
 
      body.insertAdjacentHTML("beforeend", footer)
 
-}
-
-addFooter();
+})()

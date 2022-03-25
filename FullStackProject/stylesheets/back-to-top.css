@@ -23,7 +23,7 @@ html{
     font-size: 1em;
 }
 
-.to-top.active{
+.to-top.arrow-active{
     bottom: 32px;
     opacity: 1;
     pointer-events: auto;

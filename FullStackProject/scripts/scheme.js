@@ -4,12 +4,12 @@ tabs.forEach(tab => {
     tab.addEventListener("click", ()=>{
         var li = tab.parentNode
         resetTabs();
-        li.className += " active"
+        li.classList.add("active")
         var index = tab.dataset.toggleId;
         var tabsInfo = document.querySelectorAll(".floating-buttons-info > div")
         hideAllTabsInfo(tabsInfo);
         
-        tabsInfo[index].className += "active"
+        tabsInfo[index].classList.add("active")
         
 
     })
@@ -18,18 +18,12 @@ tabs.forEach(tab => {
 var resetTabs = ()=>{
     tabs.forEach(tab => {
         var li = tab.parentNode
-        li.className = " "
+        li.classList.remove("active")
     })
 }
 
 var hideAllTabsInfo = (tabs_info)=>{
     tabs_info.forEach(tab_info => {
-        tab_info.className = tab_info.className.replace("active", "");
-    })
-}
-
-var removeClass = (elements , class_name)=>{
-    elements.forEach(element => {
-        element.className.replace("active", "");
+        tab_info.classList.remove("active")
     })
 }

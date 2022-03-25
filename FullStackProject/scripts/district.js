@@ -16,3 +16,17 @@ selectDistrict.addEventListener("change", ()=>{
     document.getElementById("distAreas").style.display = "block";
 
 });
+
+// (()=>{
+//     var div = document.createElement("div")
+//     var dropdowns = document.getElementById("frmSelectDistrict")
+//     for(var i=0;i<dropdowns.length;i++){
+//         var openDropDown = dropdowns[i];
+//     }
+
+
+
+//     // var p = document.createElement("p")
+//     // var txtNode = document.createTextNode("Covered \"Nivadak Dalit Vasti Sudhaar\"areas in")
+
+// })
