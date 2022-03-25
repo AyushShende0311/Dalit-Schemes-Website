@@ -1,5 +1,5 @@
 (()=>{
-    var list = ["पाणी पुरवठा","शौचालय","नळ जोडणी","समाज मंदिर","समाज मंदिर","पाणी पुरवठा","शौचालय","नळ जोडणी","समाज मंदिर"]
+    var list = ["पाणी पुरवठा","शौचालय","शौचालय","शौचालय","शौचालय","शौचालय","शौचालय"]
     var form = document.createElement("form")
     form.setAttribute("class","main-lower-form")
     var ul = document.createElement("ul")
@@ -20,22 +20,27 @@
 function createLi(ul,id,txt){
     var li = document.createElement("li")
     li.setAttribute("class","main-lower-checkbox")
-    createInput(li,id)
-    createLabel(li,id,txt)
+    createLiInnerContainer(li,id,txt)
     ul.appendChild(li)
 }
+function createLiInnerContainer(li,id,txt){
+    var div=document.createElement('div')
+    createInput(div,id)
+    createLabel(div,id,txt)
+    li.appendChild(div)
+}
 
-function createInput(li,id){
+function createInput(parentDiv,id){
     var input = document.createElement("input")
     input.setAttribute("type","checkbox")
     input.setAttribute("id",id)
-    li.appendChild(input)
+    parentDiv.appendChild(input)
 }
 
-function createLabel(li,id,txt){
+function createLabel(parentDiv,id,txt){
     var label = document.createElement("label")
     label.setAttribute("for",id)
     var txt = document.createTextNode(txt)
     label.appendChild(txt)
-    li.appendChild(label)
+    parentDiv.appendChild(label)
 }
