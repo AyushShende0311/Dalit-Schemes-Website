@@ -7,15 +7,15 @@
                             <div class="row">
                             
                                 <div class="header-title col-lg-4 col-sm-12">
-                                    <img src="../FullStackProject/Assets/logo/Social Justice.png">
+                                    <img src="./Assets/logo/Social Justice.png">
                                 </div>
                                 <div class="header-name col-lg-4 col-sm-12"><p>निवडक दलित वस्ती सुधार योजना</p></div>
                                 <div class="header-helpline col-lg-4 col-sm-12"><p>Helpline (Toll Free) : 2546000, 1800-3458-4578</p></div>
                                 <div id="header-photo1">
-                                    <img src="../FullStackProject/Assets/images/Dr.Ambedkar.png">
+                                    <img src="./Assets/images/Dr.Ambedkar.png">
                                 </div>
                                 <div id="minister-photo">
-                                    <img src="../FullStackProject/Assets/images/ministers.png">
+                                    <img src="./Assets/images/ministers.png">
                                 </div>
 
                             </div>  

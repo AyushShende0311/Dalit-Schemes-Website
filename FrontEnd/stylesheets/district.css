@@ -77,6 +77,14 @@
     padding:20px;
 }
 
+#sel-district{
+    width:240px;
+    display:block;
+    margin-right:auto;
+    margin-left:auto;
+    background:#7a3100;color:#fff;
+}
+
 @media (max-width:768px){
     .floating-card{
         padding: 20px;

@@ -1,10 +1,9 @@
-
 (()=>{
     var districts = ["औरंगाबाद","नांदेड","परभणी","लातूर"]
     var form = document.createElement("form")
     form.setAttribute("id","frmSelectDistrict")
     var select = document.createElement("select")
-    select.setAttribute('id',"selDistrict")
+    select.setAttribute('id',"sel-district")
     select.setAttribute("class","form-control")
     var value = 0
 
