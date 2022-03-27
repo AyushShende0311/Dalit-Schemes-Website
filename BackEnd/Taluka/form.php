@@ -8,19 +8,28 @@
     <title>Document</title>
 </head>
 <body>
-
+    <?php require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../header.php'))); ?>
+    <?= nav() ?>
     <?php 
-        require $_SERVER['DOCUMENT_ROOT']."\BackEnd\controller\talukaController.php";
+        require_once 'TalukaController.php';
+        require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
+        $db = new Database();
+        $conn= $db->connect();
+        $query = "select * from district";
+        $district = $conn->query($query);
     ?>
    
     <div class="container-lg">
-
         <div class="p-5 row justify-content-center">
-            <form action="../../controller/talukaController.php" method="POST">
+            <form action="TalukaController.php" method="POST">
                 <div class="mb-3">
-                    <label  class="form-label">Name</label>
-                    <input type="text" class="form-control" placeholder="Enter Taluka Name" name='name'>
-                    <input type="text" class="form-control" placeholder ="Enter District id" name='district_id'>
+                    <select name="district" class="form-control mb-3">
+                        <option disable="true" value="0" disabled selected> --select District--</option>
+                        <?php while($row = $district->fetch()): ?>
+                                <option value="<?= $row['id']?>" ><?= $row['name'] ?> </option>
+                        <?php endwhile ?>
+                     </select>
+                        <input type="text" class="form-control" placeholder="Enter Taluka Name" name='name'> 
                 </div>
                 <div class="mb-3">
                     <button type="submit"  class="btn btn-primary" name="submit">Save</button>
@@ -31,4 +40,5 @@
     </div>
     
 </body>
+<script src="../../../bootstrap-5.1.3-dist\js\bootstrap.min.js"></script>
 </html>
