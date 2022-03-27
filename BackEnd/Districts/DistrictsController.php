@@ -72,7 +72,7 @@
             $_SESSION['msg_type'] = "success";
         }
         catch(PDOException $e){
-            $_SESSION['message'] = "Something went wrong can not be deleted!";
+            $_SESSION['message'] = "Something went wrong can not be deleted";
             $_SESSION['msg_type'] = "danger";
 
         }

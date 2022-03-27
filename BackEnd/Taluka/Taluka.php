@@ -9,9 +9,8 @@
         public $created_by;
         public $updated_by;
 
-        function __construct($name,$district_id){
+        function constructer($name){
             $this->name = $name;
-            $this->district_id = $district_id;
             $this->created_by = 'admin';
             $this->updated_by = 'admin';
             $this->created_datetime = date("y/m/d H:i:s");
