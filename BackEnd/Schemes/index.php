@@ -12,12 +12,12 @@
     <?= nav() ?>
     <?php
         require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
-        require_once 'Districts.php';
+        require_once 'Schemes.php';
 
         session_start();
         $db = new Database();
         $conn = $db->connect();
-        $model = new Districts();
+        $model = new Schemes();
         $result = $conn->query("select * from $model->table_name");
      ?>
 
@@ -38,7 +38,7 @@
 
     <div class="container-sm p-0">
         
-        <a href="form.php" class="mb-3 btn btn-primary">Create Record</a>
+        <a href="form.php" class="mb-3 btn btn-primary">Add Scheme</a>
         <div class="ph-5  row justify-content-center">
             <table class="table table-striped table-hover table-bordered">
                 <thead class="table-dark">
@@ -65,7 +65,7 @@
                         <td><?= $row['updated_datetime']; ?></td>
                         <td>
                             <a href="update.php?edit=<?= $row['id'];?>" class="btn btn-success">Edit</a>
-                            <a href="DistrictsController.php?delete=<?= $row['id'];?>" class="btn btn-danger">Delete</a>
+                            <a href="SchemesController.php?delete=<?= $row['id'];?>" class="btn btn-danger">Delete</a>
                         </td>
                     </tr>
                     <?php $count += 1?>

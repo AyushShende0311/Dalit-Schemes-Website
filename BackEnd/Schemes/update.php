@@ -8,14 +8,14 @@
     <title>Document</title>
 </head>
 <body>
-<?php require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../header.php'))); ?>
+    <?php require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../header.php'))); ?>
     <?= nav() ?>
     <?php
  		require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
-        require_once 'Districts.php';
+        require_once 'Schemes.php';
         $db = new Database();
         $conn = $db->connect();
-        $model = new Districts();
+        $model = new Schemes();
         $id =  $_GET['edit'];
         $result = $conn->query("select * from $model->table_name where id=$id");
         $row = $result->fetch();
@@ -25,11 +25,11 @@
 
     <div class="container-lg">
             <div class="p-5 row justify-content-center">
-                <form action="districtsController.php" method="POST">
+                <form action="schemesController.php" method="POST">
                     <input type="hidden" value="<?=$id?>" name="id">
                     <div class="mb-3">
                         <label  class="form-label">Name</label>
-                        <input type="text" class="form-control" value="<?= $name?>" placeholder="Enter District Name" name='name'>
+                        <input type="text" class="form-control" value="<?= $name?>" placeholder="Enter Scheme Name" name='name'>
                     </div>
                     <div class="mb-3">
                         <button type="submit"  class="btn btn-primary" name="update">Update</button>

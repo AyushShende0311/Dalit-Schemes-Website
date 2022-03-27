@@ -1,7 +1,4 @@
-<?php
-    namespace abc;
-    use abc;
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,15 +12,15 @@
     <?php require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../header.php'))); ?>
     <?= nav() ?>
     <?php 
-        require_once 'DistrictsController.php'; 
+        require_once 'SchemesController.php'; 
     ?>
    
     <div class="container-lg">
         <div class="p-5 row justify-content-center">
-            <form action="districtsController.php" method="POST">
+            <form action="schemesController.php" method="POST">
                 <div class="mb-3">
                     <label  class="form-label">Name</label>
-                    <input type="text" class="form-control" placeholder="Enter District Name" name='name'>
+                    <input type="text" class="form-control" placeholder="Enter Scheme Name" name='name'>
                 </div>
                 <div class="mb-3">
                     <button type="submit"  class="btn btn-primary" name="submit">Save</button>
