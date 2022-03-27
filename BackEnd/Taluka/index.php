@@ -7,9 +7,13 @@
     <title>Document</title>
     <link rel="stylesheet" href="../../../bootstrap-5.1.3-dist\css\bootstrap.min.css" >
 </head>
-<body>
+<body> 
     <?php require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../header.php'))); ?>
     <?= nav() ?>
+    <script>
+        var navLink = document.querySelector("#page-taluka");
+        navLink.classList.add("active");
+    </script>
     <?php
         require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
         require_once 'Taluka.php';
@@ -38,7 +42,7 @@
 
     <div class="container-sm p-0">
         
-        <a href="form.php" class="mb-3 btn btn-primary">Create Record</a>
+        <a href="form.php" class="mb-3 btn btn-primary">Add Taluka</a>
         <div class="ph-5  row justify-content-center">
             <table class="table table-striped table-hover table-bordered">
                 <thead class="table-dark">

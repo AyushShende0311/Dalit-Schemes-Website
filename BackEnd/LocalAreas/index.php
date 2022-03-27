@@ -10,6 +10,10 @@
 <body>
     <?php require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../header.php'))); ?>
     <?= nav() ?>
+    <script>
+        var navLink = document.querySelector("#page-localarea");
+        navLink.classList.add("active");
+    </script>
     <?php
         require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
         require_once 'LocalAreas.php';
@@ -38,7 +42,7 @@
 
     <div class="container-sm p-0">
         
-        <a href="form.php" class="mb-3 btn btn-primary">Create Record</a>
+        <a href="form.php" class="mb-3 btn btn-primary">Add LocalArea</a>
         <div class="ph-5  row justify-content-center">
             <table class="table table-striped table-hover table-bordered">
                 <thead class="table-dark">

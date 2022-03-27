@@ -13,7 +13,11 @@
     <?= nav() ?>
     <?php 
         require_once 'SchemesController.php'; 
-    ?>
+    ?>    
+    <script>
+        var navLink = document.querySelector("#page-scheme");
+        navLink.classList.add("active");
+    </script>
    
     <div class="container-lg">
         <div class="p-5 row justify-content-center">

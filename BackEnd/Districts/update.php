@@ -10,6 +10,10 @@
 <body>
 <?php require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../header.php'))); ?>
     <?= nav() ?>
+    <script>
+        var navLink = document.querySelector("#page-district");
+        navLink.classList.add("active");
+    </script>
     <?php
  		require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
         require_once 'Districts.php';

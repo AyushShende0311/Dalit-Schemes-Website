@@ -10,6 +10,10 @@
 <body>
     <?php require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../header.php'))); ?>
     <?= nav() ?>
+    <script>
+        var navLink = document.querySelector("#page-localarea");
+        navLink.classList.add("active");
+    </script>
     <?php 
         require_once 'LocalAreasController.php'; 
         require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
@@ -23,13 +27,15 @@
         <div class="p-5 row justify-content-center">
             <form action="LocalAreasController.php" method="POST">
                 <div class="mb-3">
+                    <label  class="form-label">Taluka</label>
                     <select name='taluka' class="form-control mb-3" >
                         <option disable="true" value="0" disabled selected> -- Select Taluka --</option>
                         <?php while($row = $talukas->fetch()): ?>
                           <option value="<?= $row['id']?>" ><?= $row['name'] ?> </option>
                         <?php endwhile ?>
                     </select>
-                    <input type="d" class="form-control" placeholder="Enter Local Area Name" name='name'>
+                    <label  class="form-label">Name</label>
+                    <input type="text" class="form-control" placeholder="Enter Local Area Name" name='name'>
                 </div>
                 <div class="mb-3">
                     <button type="submit"  class="btn btn-primary" name="submit">Save</button>
