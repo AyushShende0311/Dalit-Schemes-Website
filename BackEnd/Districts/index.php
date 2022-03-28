@@ -21,8 +21,8 @@
         session_start();
         $db = new Database();
         $conn = $db->connect();
-        $model = new Districts();
-        $result = $conn->query("select * from $model->table_name");
+        $table = Districts::$table_name;
+        $result = $conn->query("select * from $table");
      ?>
 
     <?php 
