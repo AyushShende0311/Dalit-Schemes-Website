@@ -82,7 +82,7 @@
                 $ans = $conn->query($query);
                 while($row = $ans->fetch()){
                     $model = Districts::load($row);
-                    $result.add($model);
+                    array_push($result, $model);
                 }
             }catch(PDOException $e){
                 echo $e->getMessage();

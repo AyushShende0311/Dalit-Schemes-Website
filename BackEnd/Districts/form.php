@@ -1,7 +1,4 @@
-<?php
-    namespace abc;
-    use abc;
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

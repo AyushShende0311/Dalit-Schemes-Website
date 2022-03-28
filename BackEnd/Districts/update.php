@@ -35,7 +35,7 @@
     <div class="container-lg">
             <div class="p-5 row justify-content-center">
                 <form action="districtsController.php" method="POST">
-                    <input type="hidden" value="<?=$model->id?>" name="id">
+                    <input type="hidden" value="<?= htmlspecialchars(serialize($model), ENT_QUOTES) ?>" name="model">
                     <div class="mb-3">
                         <label  class="form-label">Name</label>
                         <input type="text" class="form-control" value="<?= $model->name?>" placeholder="Enter District Name" name='name'>
