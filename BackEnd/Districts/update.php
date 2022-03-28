@@ -23,7 +23,7 @@
         require_once 'Districts.php';
 
         $id =  $_GET['edit'];
-        if($model = Districts::get_with_id($id)){
+        if($model = Districts::get_with_id(id)){
 
         }else{
             $_SESSION['message'] = "Record Not Found";
