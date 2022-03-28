@@ -8,43 +8,49 @@
     <title>Document</title>
 </head>
 <body>
-    <?php require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../header.php'))); ?>
-    <?= nav() ?>
-    <script>
-        var navLink = document.querySelector("#page-taluka");
-        navLink.classList.add("active");
-    </script>
-    <?php 
-        require_once 'TalukaController.php';
-        require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
-        $db = new Database();
-        $conn= $db->connect();
-        $query = "select * from district";
-        $district = $conn->query($query);
-    ?>
-   
-    <div class="container-lg">
-        <div class="p-5 row justify-content-center">
-            <form action="TalukaController.php" method="POST">
-                <div class="mb-3">
-                    <label  class="form-label">District</label>
-                    <select name="district" class="form-control mb-3">
-                        <option disable="true" value="0" disabled selected> --select District--</option>
-                        <?php while($row = $district->fetch()): ?>
-                                <option value="<?= $row['id']?>" ><?= $row['name'] ?> </option>
-                        <?php endwhile ?>
-                     </select>
-                        <label  class="form-label">Name</label>
-                        <input type="text" class="form-control" placeholder="Enter Taluka Name" name='name'> 
-                </div>
-                <div class="mb-3">
-                    <button type="submit"  class="btn btn-primary" name="submit">Save</button>
-                </div>
-            </form>
-        </div>
-
-    </div>
     
+    <?php require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../header.php'))); ?>
+    <?php require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Users/Session.php'))); ?>
+    <?php if(Session::isLoggedIn()): ?>
+        <?= nav() ?>
+        <script>
+            var navLink = document.querySelector("#page-taluka");
+            navLink.classList.add("active");
+        </script>
+
+        <?php 
+            require_once 'TalukaController.php';
+            require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
+            $db = new Database();
+            $conn= $db->connect();
+            $query = "select * from district";
+            $district = $conn->query($query);
+        ?>
+    
+        <div class="container-lg">
+            <div class="p-5 row justify-content-center">
+                <form action="TalukaController.php" method="POST">
+                    <div class="mb-3">
+                        <label  class="form-label">District</label>
+                        <select name="district" class="form-control mb-3">
+                            <option disable="true" value="0" disabled selected> --select District--</option>
+                            <?php while($row = $district->fetch()): ?>
+                                    <option value="<?= $row['id']?>" ><?= $row['name'] ?> </option>
+                            <?php endwhile ?>
+                        </select>
+                            <label  class="form-label">Name</label>
+                            <input type="text" class="form-control" placeholder="Enter Taluka Name" name='name'> 
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit"  class="btn btn-primary" name="submit">Save</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    <?php else : ?>
+        <?php header("location:../Users/login.php"); ?>
+    <?php endif ?>
 </body>
 <script src="../../../bootstrap-5.1.3-dist\js\bootstrap.min.js"></script>
 </html>

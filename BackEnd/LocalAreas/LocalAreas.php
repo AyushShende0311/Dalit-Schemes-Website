@@ -1,5 +1,6 @@
 <?php
     require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
+    require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Users/Session.php')));
 
     class LocalAreas{
         public static $table_name = "localarea";
@@ -15,11 +16,11 @@
             $table = LocalAreas::$table_name;
             $db = new Database();
             $conn = $db->connect();
-            
+            $curent_username = Session::getUserName();
             $created_datetime = date("y/m/d H:i:s");
             $updated_datetime = date("y/m/d H:i:s");
-            $updated_by = 'admin';
-            $created_by = 'admin';
+            $updated_by = $curent_username;
+            $created_by = $curent_username;
 
             $query = "
             insert into $table values(
@@ -44,7 +45,7 @@
 
         public static function update($model){
             $table = LocalAreas::$table_name;
-            $model->updated_by = 'admin';
+            $model->updated_by = Session::getUserName();
             $model->updated_datetime = date("y/m/d H:i:s");
             $query = " update $table
             set 

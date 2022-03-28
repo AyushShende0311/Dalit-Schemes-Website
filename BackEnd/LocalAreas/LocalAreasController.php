@@ -23,10 +23,11 @@
 
     if(isset($_POST['update'])){
         $name = $_POST['name'];
-        $taluka_id = $_POST['taluka'];
+        $taluka_id = $_POST['taluka_id'];
         $serialized_model = $_POST["model"];
         $model = unserialize($serialized_model);
         $model->name = $name;
+        $model->taluka_id = $taluka_id;
         if(LocalAreas::update($model)){
             $_SESSION['message'] = "Record has been updated";
             $_SESSION['msg_type'] = "success";

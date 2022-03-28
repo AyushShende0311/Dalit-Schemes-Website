@@ -23,9 +23,11 @@
 
     if(isset($_POST['update'])){
         $name = $_POST['name'];
+        $district_id = $_POST['district_id'];
         $serialized_model = $_POST['model'];
         $model = unserialize($serialized_model);
         $model->name = $name;
+        $model->district_id = $district_id;
         if(Taluka::update($model)){
             $_SESSION['message'] = "Record has been updated";
             $_SESSION['msg_type'] = "success";
