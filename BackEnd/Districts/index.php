@@ -19,10 +19,7 @@
         require_once 'Districts.php';
 
         session_start();
-        $db = new Database();
-        $conn = $db->connect();
-        $table = Districts::$table_name;
-        $result = $conn->query("select * from $table");
+        $models = Districts::get();
      ?>
 
     <?php 
@@ -57,21 +54,21 @@
                         <th >Action</th>
                     </tr>
                 </thead>
-                <?php $count = 1 ?> 
-                <?php while($row = $result->fetch()):?>
+                <?php $count = 0 ?> 
+                <?php while($count < count($models)):?>
                     <tr>
-                        <td> <?=$count?></td>
-                        <td><?= $row['id']; ?></td>
-                        <td><?= $row['name']; ?></td>
-                        <td><?= $row['created_by']; ?></td>
-                        <td><?= $row['updated_by']; ?></td>
-                        <td><?= $row['created_datetime']; ?></td>
-                        <td><?= $row['updated_datetime']; ?></td>
+                        <td> <?=$count+1?></td>
+                        <td><?= $models[$count]->id; ?></td>
+                        <td><?= $models[$count]->name; ?></td>
+                        <td><?= $models[$count]->created_by; ?></td>
+                        <td><?= $models[$count]->updated_by; ?></td>
+                        <td><?= $models[$count]->created_datetime; ?></td>
+                        <td><?= $models[$count]->updated_datetime; ?></td>
                         <td>
-                            <a href="update.php?edit=<?= $row['id'];?>" class="btn btn-success">Edit</a>
-                            <a href="DistrictsController.php?delete=<?= $row['id'];?>" class="btn btn-danger">Delete</a>
+                            <a href="update.php?edit=<?= $models[$count]->id;?>" class="btn btn-success">Edit</a>
+                            <a href="DistrictsController.php?delete=<?= $models[$count]->id;?>" class="btn btn-danger">Delete</a>
                         </td>
-                    </tr>
+                    </tr> 
                     <?php $count += 1?>
                 <?php endwhile; ?>
             </table>
