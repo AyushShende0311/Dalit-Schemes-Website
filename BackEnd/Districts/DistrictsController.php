@@ -38,13 +38,12 @@
             $_SESSION['message'] = "Something went Wrong!";
             $_SESSION['msg_type'] = "danger";
         }
-    
         header("location:index.php");
     }
 
     if(isset($_GET['delete'])){
         $id = $_GET['delete'];
-       
+
         if(Districts::delete($id)){
             $_SESSION['message'] = "Record has been deleted";
             $_SESSION['msg_type'] = "success";
