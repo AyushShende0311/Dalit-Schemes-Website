@@ -10,14 +10,6 @@
         public $created_by;
         public $updated_by;
 
-        function constructer($name){
-            $this->name = $name;
-            $this->created_by = 'admin';
-            $this->updated_by = 'admin';
-            $this->created_datetime = date("y/m/d H:i:s");
-            $this->updated_datetime = date("y/m/d H:i:s");
-        }
-
         public static function save($name){
             $table = Districts::$table_name;
             $db = new Database();
@@ -82,7 +74,7 @@
                 $ans = $conn->query($query);
                 while($row = $ans->fetch()){
                     $model = Districts::load($row);
-                    $result.add($model);
+                    array_push($result, $model);
                 }
             }catch(PDOException $e){
                 echo $e->getMessage();

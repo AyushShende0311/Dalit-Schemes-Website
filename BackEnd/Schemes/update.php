@@ -8,7 +8,9 @@
     <title>Document</title>
 </head>
 <body>
-    <?php require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../header.php'))); ?>
+    <?php 
+    session_start();
+    require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../header.php'))); ?>
     <?= nav() ?>
     <script>
         var navLink = document.querySelector("#page-scheme");
@@ -17,23 +19,25 @@
     <?php
  		require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
         require_once 'Schemes.php';
-        $db = new Database();
-        $conn = $db->connect();
-        $model = new Schemes();
+        
         $id =  $_GET['edit'];
-        $result = $conn->query("select * from $model->table_name where id=$id");
-        $row = $result->fetch();
-        $name = $row['name'];
-  
+        if($model = Schemes::get_with_id($id)){
+
+        }else{
+            $_SESSION['message'] = "Record Not Found";
+            $_SESSION['msg_type'] = "warning";
+            header("location:index.php");
+        }
+
     ?>
 
     <div class="container-lg">
             <div class="p-5 row justify-content-center">
                 <form action="schemesController.php" method="POST">
-                    <input type="hidden" value="<?=$id?>" name="id">
+                    <input type="hidden" value="<?= htmlspecialchars(serialize($model), ENT_QUOTES) ?>" name="model">
                     <div class="mb-3">
                         <label  class="form-label">Name</label>
-                        <input type="text" class="form-control" value="<?= $name?>" placeholder="Enter Scheme Name" name='name'>
+                        <input type="text" class="form-control" value="<?= $model->name?>" placeholder="Enter Scheme Name" name='name'>
                     </div>
                     <div class="mb-3">
                         <button type="submit"  class="btn btn-primary" name="update">Update</button>
