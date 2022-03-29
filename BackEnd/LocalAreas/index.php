@@ -1,3 +1,9 @@
+<?php   
+    require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../header.php')));
+    require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Users/Session.php'))); 
+    require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
+    require_once 'LocalAreas.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,8 +14,7 @@
     <link rel="stylesheet" href="../../../bootstrap-5.1.3-dist\css\bootstrap.min.css" >
 </head>
 <body>
-    <?php require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../header.php'))); ?>
-    <?php require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Users/Session.php'))); ?>
+  
     <?php if(Session::isLoggedIn()): ?>
         <?= nav() ?>
         <script>
@@ -19,11 +24,8 @@
 
         
         <?php
-            require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
-            require_once 'LocalAreas.php';
-
             session_start();
-            $models = LocalAreas::get();
+            $models = LocalAreas::get_with_join();
         ?>
 
         <?php 
@@ -51,7 +53,7 @@
                             <th>#</th>
                             <th>id</th>
                             <th>Local Area name</th>
-                            <th>taluka_id</th>
+                            <th>taluka_name</th>
                             <th>created_by</th>
                             <th>updated_by</th>
                             <th>created_datetime</th>
@@ -65,7 +67,7 @@
                             <td> <?=$count+1?></td>
                             <td><?= $models[$count]->id; ?></td>
                             <td><?= $models[$count]->name; ?></td>
-                            <td><?= $models[$count]->taluka_id; ?></td>
+                            <td><?= $models[$count]->taluka_name; ?></td>
                             <td><?= $models[$count]->created_by; ?></td>
                             <td><?= $models[$count]->updated_by; ?></td>
                             <td><?= $models[$count]->created_datetime; ?></td>

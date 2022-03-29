@@ -1,14 +1,22 @@
 <?php
     require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
+    require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Districts/Districts.php')));
+    require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../LocalAreas/LocalAreas.php')));
+    require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Taluka/Taluka.php')));
+    require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Schemes/Schemes.php')));
 
     class DistrictWiseSchemes{
         public static $table_name = "main";
         public $id;
         public $name;
         public $district_id;
+        public $district_name;
         public $taluka_id;
+        public $taluka_name;
         public $localarea_id;
+        public $localarea_name;
         public $scheme_id;
+        public $scheme_name;
         public $created_datetime;
         public $updated_datetime;
         public $created_by;
@@ -95,6 +103,50 @@
             return $result;
         }
 
+        public static function get_with_join(){
+            $table = DistrictWiseSchemes::$table_name;
+            $table_district = Districts::$table_name;
+            $table_taluka = Taluka::$table_name;
+            $table_localarea = LocalAreas::$table_name;
+            $table_schemes = Schemes::$table_name;
+            $db = new Database();
+            $conn = $db->connect();
+            $result = array();
+
+            $query = "select $table.id,
+            $table.district_id,
+            $table_district.name as 'district_name', 
+            $table.taluka_id,
+            $table_taluka.name as 'taluka_name',
+            $table.localarea_id,
+            $table_localarea.name as 'localarea_name',
+            $table.schemes_id,
+            $table_schemes.name as 'scheme_name', 
+            $table.created_datetime,
+            $table.updated_datetime,
+            $table.created_by,
+            $table.updated_by 
+            from $table 
+            inner join $table_district on $table.district_id=$table_district.id 
+            inner join $table_taluka on $table.taluka_id=$table_taluka.id
+            inner join $table_schemes on $table.schemes_id=$table_schemes.id
+            inner join $table_localarea on $table.localarea_id=$table_localarea.id
+            order by $table.id";
+
+            try{
+                $ans = $conn->query($query);
+                while($row = $ans->fetch()){
+                    $model = DistrictWiseSchemes::load_with_join($row);
+                    array_push($result, $model);
+                }
+            }catch(PDOException $e){
+                echo $e->getMessage();
+            }
+           
+            return $result;
+        }
+
+
         
         public static function get_with_id($id){
             $table = DistrictWiseSchemes::$table_name;
@@ -138,6 +190,24 @@
             $object->taluka_id = $row['taluka_id'];
             $object->localarea_id = $row['localarea_id'];
             $object->scheme_id = $row['schemes_id'];
+            $object->created_datetime = $row['created_datetime'];
+            $object->updated_datetime = $row['updated_datetime'];
+            $object->created_by = $row['created_by'];
+            $object->updated_by = $row['updated_by'];
+            return $object;
+        }
+
+        public static function load_with_join($row){
+            $object = new DistrictWiseSchemes();
+            $object->id = $row['id'];
+            $object->district_id = $row['district_id'];
+            $object->district_name = $row['district_name'];
+            $object->taluka_id = $row['taluka_id'];
+            $object->taluka_name = $row['taluka_name'];
+            $object->localarea_id = $row['localarea_id'];
+            $object->localarea_name = $row['localarea_name'];
+            $object->scheme_id = $row['schemes_id'];
+            $object->scheme_name = $row['scheme_name'];
             $object->created_datetime = $row['created_datetime'];
             $object->updated_datetime = $row['updated_datetime'];
             $object->created_by = $row['created_by'];

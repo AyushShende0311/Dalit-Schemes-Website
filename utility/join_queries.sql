@@ -1,13 +1,15 @@
 -- Taluka Query:
-select taluka.id, taluka.name , district.name as 'DISTRICT_NAME',taluka.district_id , taluka.created_by, taluka.updated_by, 
+select taluka.id, taluka.name , district.name as 'district_name',taluka.district_id , taluka.created_by, taluka.updated_by, 
 taluka.created_datetime, taluka.updated_datetime
-from taluka inner join district where taluka.district_id=district.id;
+from taluka inner join district where taluka.district_id=district.id
+order by taluka.id;
 
 
 -- LOCALAREA Query:
-select localarea.id, localarea.name, taluka.name as 'TALUKA_NAME',localarea.taluka_id , localarea.created_by, localarea.updated_by, 
+select localarea.id, localarea.name, taluka.name as 'taluka_name',localarea.taluka_id , localarea.created_by, localarea.updated_by, 
 localarea.created_datetime, localarea.updated_datetime
-from localarea inner join taluka where localarea.taluka_id=taluka_id;
+from localarea inner join taluka on localarea.taluka_id=taluka.id
+order by localarea.id;
 
 
 
@@ -22,3 +24,4 @@ inner join district on main.district_id=district.id
 inner join taluka on main.taluka_id=taluka.id
 inner join schemes on main.schemes_id=schemes.id
 inner join localarea on main.localarea_id=localarea.id
+order by main.id;
