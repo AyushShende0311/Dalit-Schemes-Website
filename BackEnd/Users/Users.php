@@ -7,7 +7,6 @@
         public $username;
         private $password;
 
-
         public static function login($username, $password){
             if($currentUser = Users::getUser($username)){
                 $verify = password_verify($password, $currentUser->password);
@@ -17,7 +16,7 @@
                 return 0;
             }
         }
-
+        
         private static function getUser($username){
             $table = Users::$table_name;
             $query = "select * from $table where username='$username'";

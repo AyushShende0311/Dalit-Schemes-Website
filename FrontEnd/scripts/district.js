@@ -30,8 +30,7 @@ var talukas = {
         option.setAttribute("value",value)
         select.appendChild(option)
         value += 1
-     })
-     
+     })    
      form.appendChild(select)
      var dropdown_wrapper = document.querySelector(".dropdown-wrapper")
      dropdown_wrapper.insertBefore(form,dropdown_wrapper.children[2])
@@ -42,15 +41,23 @@ function handler(talukas) {
     var select = document.querySelector("#sel-district")
     select.addEventListener("change",()=>{
         var distAreas = document.querySelector("#distAreas")
+        
         // set Visibity to visible
+
         distAreas.style.display = "block"
 
         var distAreasDiv = document.querySelector("#distAreas > .text-center")
+        
         // removed all elements
+
         distAreasDiv.innerHTML = ''
+        
         // selected dropdown value
+
         var selectedDistrict = select.options[select.selectedIndex].text
+        
         // created title
+
         var p = document.createElement("p")
         p.setAttribute("style","font-weight:600")
         var txt1 = document.createTextNode("Covered \"Nivadak Dalit Vasti Sudhaar\" areas in ")
@@ -69,10 +76,8 @@ function handler(talukas) {
             talukas[selectedDistrict][taluka].forEach(area=>{
                 createP(distAreasDiv,taluka,area)
             })
-        }
-        
+        }     
     })
-
 }
 
 function createP(parent,taluka, area){

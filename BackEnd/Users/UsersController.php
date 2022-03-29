@@ -1,5 +1,4 @@
 <?php
-
     require_once 'Users.php';
     require_once 'Session.php';
     session_start();
@@ -15,8 +14,7 @@
                 $_SESSION['message'] = "Login Failed! Session Error";
                 $_SESSION['msg_type'] = "danger";
                 header("location:./login.php");
-            }
-            
+            }     
         }else{
             $_SESSION['message'] = "Login Failed! Incorrect Credentials";
             $_SESSION['msg_type'] = "danger";

@@ -1,4 +1,3 @@
-
 <?php
   require_once 'Schemes.php';
   require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));

@@ -62,8 +62,7 @@ function createFloatingTabsInfo(parentDiv,imagesList){
     imagesList.forEach(image=>{
         createImage(div1,image)
     })
-    parentDiv.appendChild(div)
-    
+    parentDiv.appendChild(div) 
 }
 
 function createImage(parentDiv,image){

@@ -1,3 +1,6 @@
+<?php require_once 'Session.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +12,6 @@
 </head>
 <body>
     <?php 
-        require_once 'Session.php';
         Session::delete();
     ?>
         <div class='bg-secondary container-fluid mb-4'>
@@ -21,8 +23,7 @@
                     <span class='navbar-toggler-icon'></span>
                 </button>
                 <div class='collapse navbar-collapse' id='navbarNav'>
-                    <ul class='navbar-nav'>
-                       
+                    <ul class='navbar-nav'>        
                     </ul>
                 </div>
                 </div>

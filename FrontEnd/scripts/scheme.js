@@ -7,11 +7,8 @@ tabs.forEach(tab => {
         li.classList.add("active")
         var index = tab.dataset.toggleId;
         var tabsInfo = document.querySelectorAll(".floating-buttons-info > div")
-        hideAllTabsInfo(tabsInfo);
-        
+        hideAllTabsInfo(tabsInfo);        
         tabsInfo[index].classList.add("active")
-        
-
     })
 });
 
@@ -35,7 +32,6 @@ var hideAllTabsInfo = (tabs_info)=>{
     li.classList.add("active")
     div.classList.remove("active")
     div.classList.add("active")
-
 })()
 
 

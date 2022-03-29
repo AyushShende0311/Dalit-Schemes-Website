@@ -54,6 +54,7 @@
                 <form action="DistrictWiseSchemesController.php" method="POST">
                     <input type="hidden" value="<?=htmlspecialchars(serialize($model),ENT_QUOTES)?>" name="model">
                     <div class="mb-3">
+
                         <!-- District  -->
                         <label  class="form-label">District</label>
                         <select id="district" name='district' class="form-control mb-3" onchange="getTalukas()">
@@ -63,17 +64,20 @@
                             <?php endforeach ?>
                             <script> getTalukas_update(<?= $model->taluka_id ?>) </script>
                         </select>
+
                         <!-- taluka  -->
                         <label  class="form-label">Taluka</label>
                         <select id="taluka" name='taluka' class="form-control mb-3" onchange="getLocalAreas()" >
                             <option disable="true" value="0" disabled selected> -- Select --</option>
                             <script> getLocalAreas_update(<?= $model->localarea_id ?>,<?= $model->taluka_id ?>) </script>
                         </select>
+
                         <!-- Area  -->
                         <label  class="form-label">Area</label>
                         <select id="area" name='area' class="form-control mb-3">
                             <option disable="true" value="0" disabled selected> -- Select --</option>
                         </select>
+                        
                         <!-- Schemes -->
                         <label  class="form-label">Schemes</label>
                         <select id="scheme" name='scheme' class="form-control mb-3" >

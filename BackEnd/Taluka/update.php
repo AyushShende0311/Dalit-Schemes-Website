@@ -1,3 +1,11 @@
+<?php 
+    require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Users/Session.php')));
+    require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
+    require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Districts/Districts.php')));
+    require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../header.php'))); 
+    require_once 'Taluka.php'; 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,40 +16,32 @@
     <title>Document</title>
 </head>
 <body>
-<?php require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Users/Session.php'))); ?>
+
 <?php if(Session::isLoggedIn()): ?>
         <?php
-        session_start(); 
-        require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../header.php'))); ?>
+            session_start(); 
+        ?>
         <?= nav() ?>
         <script>
             var navLink = document.querySelector("#page-taluka");
             navLink.classList.add("active");
         </script>
 
-        <?php
-            require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
-            require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Districts/Districts.php')));
-            require_once 'Taluka.php';
-
+        <?php     
             $id =  $_GET['edit'];
             if($model = Taluka::get_with_id($id)){
-
             }else{
                 $_SESSION['message'] = "Record Not Found";
                 $_SESSION['msg_type'] = "warning";
                 header("location:index.php");
             }
             if($districts = Districts::get()){
-
             }else{
                 $_SESSION['message'] = "Record Not Found";
                 $_SESSION['msg_type'] = "warning";
                 header("location:index.php");
             }
-    
         ?>
-
         <div class="container-lg">
                 <div class="p-5 row justify-content-center">
                     <form action="TalukaController.php" method="POST">

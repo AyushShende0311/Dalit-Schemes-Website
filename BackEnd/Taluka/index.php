@@ -14,39 +14,28 @@
     <link rel="stylesheet" href="../../../bootstrap-5.1.3-dist\css\bootstrap.min.css" >
 </head>
 <body> 
-   
-
-
-    <?php if(Session::isLoggedIn()): ?>
-            
+    <?php if(Session::isLoggedIn()): ?>   
         <?= nav() ?>
         <script>
             var navLink = document.querySelector("#page-taluka");
             navLink.classList.add("active");
         </script>
-
         <?php
             session_start();
             $models=Taluka::get_with_join();
         ?>
-
         <?php 
             if(isset($_SESSION['message'])):
-        ?>
-            
+        ?>     
             <div class="alert alert-<?= $_SESSION['msg_type'];?>" >
             
                 <?php 
                     echo $_SESSION['message'];
                     unset($_SESSION['message']); 
                 ?>
-            </div>
-        
+            </div>   
         <?php endif ?>
-
-
-        <div class="container-sm p-0">
-            
+        <div class="container-sm p-0">    
             <a href="form.php" class="mb-3 btn btn-primary">Add Taluka</a>
             <div class="ph-5  row justify-content-center">
                 <table class="table table-striped table-hover table-bordered">
@@ -81,8 +70,7 @@
                         </tr>
                         <?php $count += 1?>
                     <?php endwhile; ?>
-                </table>
-                
+                </table>               
             </div>
         </div>
     <?php else : ?> 

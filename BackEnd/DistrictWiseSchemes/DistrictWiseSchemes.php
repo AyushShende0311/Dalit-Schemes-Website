@@ -26,7 +26,6 @@
             $table = DistrictWiseSchemes::$table_name;
             $db = new Database();
             $conn = $db->connect();
-            
             $created_datetime = date("y/m/d H:i:s");
             $updated_datetime = date("y/m/d H:i:s");
             $updated_by = 'admin';
@@ -52,7 +51,6 @@
                 echo $e->getMessage();
                 return 0;
             }
-           
             return 0;
         }
 
@@ -69,10 +67,8 @@
             updated_by='$model->updated_by', 
             updated_datetime='$model->updated_datetime' 
             where id=$model->id ";
-
             $db = new Database();
             $conn = $db->connect();
-
             try{
                 $conn->query($query);
                 return 1;
@@ -99,7 +95,6 @@
             }catch(PDOException $e){
                 echo $e->getMessage();
             }
-           
             return $result;
         }
 
@@ -142,16 +137,14 @@
             }catch(PDOException $e){
                 echo $e->getMessage();
             }
-           
             return $result;
         }
-
-
-        
+  
         public static function get_with_id($id){
             $table = DistrictWiseSchemes::$table_name;
             $db = new Database();
             $conn = $db->connect();
+
             $query = "select * from $table where id=$id";
             try{
                 $ans = $conn->query($query);
@@ -160,8 +153,7 @@
                 }
                 else{
                     return 0;
-                }
-                
+                }             
             }catch(PDOException $e){
                 return 0;
             }
@@ -173,7 +165,6 @@
             $conn = $db->connect();
 
             $query = "delete from $table where id=$id";
-            
             try{
                 $conn->query($query);
                 return 1;
