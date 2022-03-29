@@ -106,6 +106,25 @@
             }
         }
 
+        public static function get_with_district_id($id){
+            $table = Taluka::$table_name;
+            $db = new Database();
+            $conn = $db->connect();
+            $query = "select * from $table where district_id = $id";
+            $result = array();
+            try{
+                $ans = $conn->query($query);
+                while($row = $ans->fetch()){
+                    $model = Taluka::load($row);
+                    array_push($result,$model);
+                }
+            }catch(PDOException $e){
+                echo $e->getMessage();
+            }
+        
+            return $result;
+        }
+
         public static function delete($id){
             $table = Taluka::$table_name;
             $db = new Database();
@@ -122,6 +141,28 @@
             }
         }
 
+        // public static function get_district_taluka(){
+        //     $table = Taluka::$table_name;
+        //     $db = new Database();
+        //     $conn = $db->connect();
+        //     $result = array();
+
+        //     $query = "select taluka.id, taluka.name , district.name , taluka.created_datetime, taluka.updated_datetime, taluka.created_by, taluka.updated_by
+        //     from  taluka inner join district on  taluka.id=district.id";
+        //     echo $query;
+        //     try{
+        //         $ans = $conn->query($query);
+        //         while($row = $ans->fetch()){
+        //             $model = Taluka::load($row);
+        //             array_push($result, $model);
+        //         }
+        //     }catch(PDOException $e){
+        //         echo $e->getMessage();
+        //     }
+           
+        //     return $result;
+        // }
+
         public static function load($row){
             $object = new Taluka();
             $object->id = $row['id'];
@@ -133,5 +174,6 @@
             $object->updated_by = $row['updated_by'];
             return $object;
         }
+
     }
 ?>

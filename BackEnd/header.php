@@ -24,8 +24,11 @@
                             <a class='nav-link' id='page-scheme' href='../Schemes/index.php'>Schemes</a>
                         </li>
                         <li class='nav-item'>
-                        <a class='nav-link' id='page-scheme' href='../index.php'>Logout</a>
-                    </li>
+                            <a class='nav-link' id='page-main' href='../DistrictWiseSchemes/index.php'>DistrictWiseSchemes</a>
+                        </li>
+                        <li class='nav-item'>
+                            <a class='nav-link' id='page-scheme' href='../index.php'>Logout</a>
+                        </li>
                     </ul>
                 </div>
                 </div>
