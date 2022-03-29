@@ -1,3 +1,8 @@
+<?php 
+    require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../header.php'))); 
+    require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
+    require_once 'DistrictWiseSchemes.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,18 +13,17 @@
     <link rel="stylesheet" href="../../../bootstrap-5.1.3-dist\css\bootstrap.min.css" >
 </head>
 <body>
-    <?php require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../header.php'))); ?>
+    
     <?= nav() ?>
     <script>
         var navLink = document.querySelector("#page-main");
         navLink.classList.add("active");
     </script>
     <?php
-        require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
-        require_once 'DistrictWiseSchemes.php';
+       
 
         session_start();
-        $models = DistrictWiseSchemes::get();
+        $models = DistrictWiseSchemes::get_with_join();
      ?>
 
     <?php 
@@ -46,10 +50,10 @@
                     <tr>
                         <th>#</th>
                         <th>id</th>
-                        <th>district_id</th>
-                        <th>taluka_id</th>
-                        <th>localarea_id</th>
-                        <th>scheme_id</th>
+                        <th>district_name</th>
+                        <th>taluka_name</th>
+                        <th>localarea_name</th>
+                        <th>scheme_name</th>
                         <th>created_by</th>
                         <th>updated_by</th>
                         <th>created_datetime</th>
@@ -62,10 +66,10 @@
                     <tr>
                         <td> <?=$count+1?></td>
                         <td><?= $models[$count]->id; ?></td>
-                        <td><?= $models[$count]->district_id; ?></td>
-                        <td><?= $models[$count]->taluka_id; ?></td>
-                        <td><?= $models[$count]->localarea_id; ?></td>
-                        <td><?= $models[$count]->scheme_id; ?></td>
+                        <td><?= $models[$count]->district_name; ?></td>
+                        <td><?= $models[$count]->taluka_name; ?></td>
+                        <td><?= $models[$count]->localarea_name; ?></td>
+                        <td><?= $models[$count]->scheme_name; ?></td>
                         <td><?= $models[$count]->created_by; ?></td>
                         <td><?= $models[$count]->updated_by; ?></td>
                         <td><?= $models[$count]->created_datetime; ?></td>

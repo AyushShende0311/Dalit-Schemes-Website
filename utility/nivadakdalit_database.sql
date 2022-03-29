@@ -9,6 +9,8 @@ DROP TABLE IF EXISTS `localarea`;
 DROP TABLE IF EXISTS `schemes`;
 DROP TABLE IF EXISTS `taluka`;
 DROP TABLE IF EXISTS `district`;
+DROP TABLE IF EXISTS `users`;
+DROP TABLE IF EXISTS `session`;
 
 CREATE TABLE district (
 	`id` int AUTO_INCREMENT,
@@ -65,10 +67,10 @@ CREATE TABLE main (
 	`updated_datetime` datetime NOT NULL,
 	`created_by` varchar(50) NOT NULL,
 	`updated_by` varchar(50) NOT NULL,
-    FOREIGN KEY (`district_id`) REFERENCES `district` (`id`),
-    FOREIGN KEY (`taluka_id`) REFERENCES `taluka` (`id`),
-    FOREIGN KEY (`schemes_id`) REFERENCES `schemes` (`id`),
-    FOREIGN KEY (`localarea_id`) REFERENCES `localarea` (`id`)
+    FOREIGN KEY (`district_id`) REFERENCES `district` (`id`) ON DELETE CASCADE,
+    FOREIGN KEY (`taluka_id`) REFERENCES `taluka` (`id`) ON DELETE CASCADE,
+    FOREIGN KEY (`schemes_id`) REFERENCES `schemes` (`id`) ON DELETE CASCADE,
+    FOREIGN KEY (`localarea_id`) REFERENCES `localarea` (`id`) ON DELETE CASCADE
 );
 
 CREATE TABLE images (
@@ -82,3 +84,19 @@ CREATE TABLE images (
 	`updated_by` varchar(50) NOT NULL,
     FOREIGN KEY (`main_id`) REFERENCES `main` (`id`)
 );
+
+
+
+CREATE TABLE session (
+  `id` INT NOT NULL DEFAULT 1,
+  `user_name` VARCHAR(45) NULL,
+  `is_logged_in` INT NULL,
+  PRIMARY KEY (`id`));
+
+
+
+CREATE TABLE users (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(45) NULL,
+  `password` VARCHAR(300) NULL,
+  PRIMARY KEY (`id`));

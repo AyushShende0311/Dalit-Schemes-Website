@@ -1,12 +1,14 @@
 <?php
     require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
     require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Users/Session.php')));
+    require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Districts/Districts.php')));
 
     class Taluka{
         public static $table_name = "taluka";
         public $id;
         public $name;
         public $district_id;
+        public $district_name;
         public $created_datetime;
         public $updated_datetime;
         public $created_by;
@@ -125,6 +127,40 @@
             return $result;
         }
 
+        public static function get_with_join(){
+            $table = Taluka::$table_name;
+            $table_district = Districts::$table_name;
+
+            $db = new Database();
+            $conn = $db->connect();
+
+            $result = array();
+            
+            $query = "select 
+            $table.id, 
+            $table.name , 
+            $table_district.name as 'district_name',
+            $table.district_id , 
+            $table.created_by, 
+            $table.updated_by, 
+            $table.created_datetime, 
+            $table.updated_datetime
+            from $table inner join $table_district 
+            where $table.district_id=$table_district.id
+            order by $table.id";
+
+            try{
+                $ans = $conn->query($query);
+                while($row = $ans->fetch()){
+                    $model = Taluka::load_with_join($row);
+                    array_push($result,$model);
+                }
+            }catch(PDOException $e){
+                echo $e->getMessage();
+            }
+            return $result;
+        }
+
         public static function delete($id){
             $table = Taluka::$table_name;
             $db = new Database();
@@ -168,6 +204,19 @@
             $object->id = $row['id'];
             $object->name = $row['name'];
             $object->district_id = $row['district_id'];
+            $object->created_datetime = $row['created_datetime'];
+            $object->updated_datetime = $row['updated_datetime'];
+            $object->created_by = $row['created_by'];
+            $object->updated_by = $row['updated_by'];
+            return $object;
+        }
+
+        public static function load_with_join($row){
+            $object = new Taluka();
+            $object->id = $row['id'];
+            $object->name = $row['name'];
+            $object->district_id = $row['district_id'];
+            $object->district_name = $row['district_name'];
             $object->created_datetime = $row['created_datetime'];
             $object->updated_datetime = $row['updated_datetime'];
             $object->created_by = $row['created_by'];

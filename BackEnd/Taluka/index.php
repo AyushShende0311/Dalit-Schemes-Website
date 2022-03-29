@@ -1,3 +1,9 @@
+<?php 
+    require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../header.php')));
+    require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Users/Session.php'))); 
+    require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
+    require_once 'Taluka.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,8 +14,8 @@
     <link rel="stylesheet" href="../../../bootstrap-5.1.3-dist\css\bootstrap.min.css" >
 </head>
 <body> 
-    <?php require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../header.php'))); ?>
-    <?php require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Users/Session.php'))); ?>
+   
+
 
     <?php if(Session::isLoggedIn()): ?>
             
@@ -20,12 +26,8 @@
         </script>
 
         <?php
-            require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
-            require_once 'Taluka.php';
-
             session_start();
-            $models=Taluka::get();
-
+            $models=Taluka::get_with_join();
         ?>
 
         <?php 
@@ -53,7 +55,7 @@
                             <th>#</th>
                             <th>id</th>
                             <th>Taluka name</th>
-                            <th>district_id</th>
+                            <th>district_name</th>
                             <th>created_by</th>
                             <th>updated_by</th>
                             <th>created_datetime</th>
@@ -67,7 +69,7 @@
                             <td> <?=$count+1?></td>
                             <td><?= $models[$count]->id; ?></td>
                             <td><?= $models[$count]->name; ?></td>
-                            <td><?= $models[$count]->district_id; ?></td>
+                            <td><?= $models[$count]->district_name; ?></td>
                             <td><?= $models[$count]->created_by; ?></td>
                             <td><?= $models[$count]->updated_by; ?></td>
                             <td><?= $models[$count]->created_datetime; ?></td>
