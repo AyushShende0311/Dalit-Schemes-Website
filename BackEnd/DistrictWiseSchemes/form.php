@@ -30,7 +30,7 @@
    <!-- Form -->
     <div class="container-lg">
         <div class="p-5 row justify-content-center">
-            <form action="DistrictWiseSchemesController.php" method="POST">
+            <form id="form" action="DistrictWiseSchemesController.php" method="POST" enctype="multipart/form-data">
                 <div class="mb-3">
 
                     <!-- District  -->
@@ -62,6 +62,9 @@
                           <option value="<?= $scheme->id?>" ><?= $scheme->name ?> </option>
                         <?php endforeach ?>
                     </select>
+                </div>
+                <div id="image-upload-target" class="pt-3 mb-4">
+                        <div class="btn btn-info" onClick="addImageUploader()">Add Image</div>
                 </div>
                 <div class="mb-3">
                     <button type="submit"  class="btn btn-primary" name="submit">Save</button>

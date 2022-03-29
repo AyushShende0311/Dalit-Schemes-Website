@@ -5,15 +5,58 @@
   session_start();
 ?>
 
+   
+    
 <?php
+    $target_dir = "../uploads/";
+    $allowed_types = array("jpeg",'jpg','png',"gif");
     if(isset($_POST['submit'])){
         $district_id = $_POST['district'];
         $taluka_id = $_POST['taluka'];
         $localarea_id = $_POST['area'];
         $scheme_id = $_POST['scheme'];
         if(DistrictWiseSchemes::save($district_id,$taluka_id,$localarea_id,$scheme_id)){
-            $_SESSION['message'] = "Record has been saved";
-            $_SESSION['msg_type'] = "success";
+         
+
+            if(!empty(array_filter($_FILES['files']['name']))){
+                foreach($_FILES['files']['tmp_name'] as $key=>$value){
+                    $file_tmpname = $_FILES['files']['tmp_name'][$key];
+                    $file_name = $_FILES['files']['name'][$key];
+                    $file_size = $_FILES['files']['size'][$key];
+                    $file_ext = pathinfo($file_name, PATHINFO_EXTENSION);
+
+                    $filepath = $target_dir.$file_name;
+
+                    if(in_array(strtolower($file_ext), $allowed_types)){
+                        if(file_exists($filepath)){
+                            $filepath = $target_dir.time().$file_name;
+                            $filename = time().$file_name;
+
+                            if(move_uploaded_file($file_tmpname, $filepath)){
+                                $_SESSION['message'] = "Record has been saved";
+                                $_SESSION['msg_type'] = "success";
+                            }else{
+                                $_SESSION['message'] = $file_name." File Not uploaded";
+                                $_SESSION['msg_type'] = "danger";
+                            }
+                        }else{
+                            if(move_uploaded_file($file_tmpname, $filepath)){
+                                $_SESSION['message'] = "Record has been saved";
+                                $_SESSION['msg_type'] = "success";
+                            }else{
+                                $_SESSION['message'] = $file_name." File Not uploaded";
+                                $_SESSION['msg_type'] = "danger";
+                            }
+                        }
+                    }else{
+                        $_SESSION['message'] = $file_name." File Type Not Allowed ! fail to upload file";
+                        $_SESSION['msg_type'] = "danger";
+                    }
+                }
+            }else{
+                $_SESSION['message'] = "Image Not Uploaded";
+                $_SESSION['msg_type'] = "danger";
+            }
         }else{
             $_SESSION['message'] = "Something went wrong!";
             $_SESSION['msg_type'] = "danger";
@@ -54,4 +97,3 @@
         }
         header("location:index.php");
     }
-?>
