@@ -1,3 +1,8 @@
+<?php 
+    require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../header.php'))); 
+    require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Users/Session.php')));
+    require_once 'DistrictsController.php'; 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,8 +14,6 @@
     <title>Document</title>
 </head>
 <body>
-    <?php require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../header.php'))); ?>
-    <?php require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Users/Session.php'))); ?>
     <?php if(Session::isLoggedIn()): ?>
         <?= nav() ?>
         <script>
@@ -18,11 +21,6 @@
             navLink.classList.add("active");
         </script>
 
-
-        <?php 
-            require_once 'DistrictsController.php'; 
-        ?>
-    
         <div class="container-lg">
             <div class="p-5 row justify-content-center">
                 <form action="districtsController.php" method="POST" ">
@@ -39,7 +37,6 @@
     <?php else : ?>
         <?php header("location:../Users/login.php"); ?>
     <?php endif ?>
-    
 </body>
 <script src="../../../bootstrap-5.1.3-dist\js\bootstrap.min.js"></script>
 </html>

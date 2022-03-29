@@ -17,7 +17,6 @@
                                 <div id="minister-photo">
                                     <img src="./Assets/images/ministers.png">
                                 </div>
-
                             </div>  
                         </div>
                     </div>
@@ -42,7 +41,6 @@
                     </div>  
                 </div>    
       `
-
       body.insertAdjacentHTML("afterbegin", header)
 })()
 

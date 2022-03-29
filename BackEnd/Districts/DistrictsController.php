@@ -1,14 +1,11 @@
+<?php
+    require_once 'Districts.php';
+    require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
+    
+    session_start();
+    $db = new  Database();
+    $conn = $db->connect();
 
-<?php
-  require_once 'Districts.php';
-  require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
-  session_start();
-  $db = new  Database();
-  $conn = $db->connect();
-?>
- 
-<?php
-   
     if(isset($_POST['submit'])){
         $name = $_POST['name'];
         if(Districts::save($name)){
@@ -47,5 +44,4 @@
         }
         header("location:index.php");
     }
-
 ?>

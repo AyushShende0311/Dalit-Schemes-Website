@@ -1,4 +1,3 @@
-
 <?php
   require_once 'Taluka.php';
   require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
@@ -7,7 +6,6 @@
   $conn = $db->connect();
 ?>
 <?php
-
     if(isset($_POST['submit'])){
         $name = $_POST['name'];
         $district_id = $_POST['district'];

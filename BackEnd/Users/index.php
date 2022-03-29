@@ -1,3 +1,8 @@
+<?php 
+    require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../header.php')));
+    require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Users/Session.php'))); 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,8 +13,6 @@
     <title>Document</title>
 </head>
 <body>
-    <?php require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../header.php'))); ?>
-    <?php require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Users/Session.php'))); ?>
     <?php if(Session::isLoggedIn()): ?>
         <?= nav() ?>
         <script>
@@ -25,7 +28,6 @@
     <?php else : ?>
         <?php header("location:../Users/login.php"); ?>
     <?php endif ?>
-
 </body>
 <script src="../../bootstrap-5.1.3-dist\js\bootstrap.min.js"></script>
 </html>

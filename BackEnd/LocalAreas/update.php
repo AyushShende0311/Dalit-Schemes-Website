@@ -1,3 +1,11 @@
+<?php 
+    require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../header.php'))); 
+    require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Users/Session.php'))); 
+    require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
+    require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Taluka/Taluka.php')));
+    require_once 'LocalAreas.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,37 +16,29 @@
     <title>Document</title>
 </head>
 <body>
-    <?php require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../header.php'))); ?>
-    <?php require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Users/Session.php'))); ?>
+    
     <?php if(Session::isLoggedIn()): ?>
         <?= nav() ?>
         <script>
             var navLink = document.querySelector("#page-localarea");
             navLink.classList.add("active");
         </script>
-
         
         <?php
-            require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
-            require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Taluka/Taluka.php')));
-            require_once 'LocalAreas.php';
             $id =  $_GET['edit'];
-            if($model = LocalAreas::get_with_id($id)){
-                
+            if($model = LocalAreas::get_with_id($id)){   
             }else{
                 $_SESSION['message'] = "Record Not Found";
                 $_SESSION['msg_type'] = "warning";
                 header("location:index.php");
             }
-            if($talukas = Taluka::get()){
-                
+            if($talukas = Taluka::get()){        
             }else{
                 $_SESSION['message'] = "Record Not Found";
                 $_SESSION['msg_type'] = "warning";
                 header("location:index.php");
             }
         ?>
-
         <div class="container-lg">
                 <div class="p-5 row justify-content-center">
                     <form action="LocalAreasController.php" method="POST">

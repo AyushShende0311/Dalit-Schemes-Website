@@ -1,4 +1,3 @@
-
 <?php
   require_once 'DistrictWiseSchemes.php';
   
@@ -6,11 +5,11 @@
   session_start();
 ?>
 
-<?php   
-
+   
+    
+<?php
     $target_dir = "../uploads/";
     $allowed_types = array("jpeg",'jpg','png',"gif");
-    
     if(isset($_POST['submit'])){
         $district_id = $_POST['district'];
         $taluka_id = $_POST['taluka'];
@@ -98,7 +97,3 @@
         }
         header("location:index.php");
     }
-
-    
-
-?>

@@ -1,3 +1,10 @@
+<?php 
+    require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Users/Session.php'))); 
+    require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
+    require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../header.php')));
+    require_once 'Schemes.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +15,7 @@
     <title>Document</title>
 </head>
 <body>
-    <?php require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Users/Session.php'))); ?>
+    
     <?php if(Session::isLoggedIn()): ?>
         <?php 
         session_start();
@@ -18,20 +25,14 @@
             var navLink = document.querySelector("#page-scheme");
             navLink.classList.add("active");
         </script>
-
-        <?php
-            require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
-            require_once 'Schemes.php';
-            
+        <?php  
             $id =  $_GET['edit'];
             if($model = Schemes::get_with_id($id)){
-
             }else{
                 $_SESSION['message'] = "Record Not Found";
                 $_SESSION['msg_type'] = "warning";
                 header("location:index.php");
             }
-
         ?>
 
         <div class="container-lg">

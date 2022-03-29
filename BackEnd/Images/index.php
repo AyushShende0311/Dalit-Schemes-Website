@@ -1,7 +1,7 @@
 <?php 
     require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../header.php'))); 
     require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
-    require_once 'DistrictWiseSchemes.php';
+    require_once 'Images.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,12 +16,12 @@
     
     <?= nav() ?>
     <script>
-        var navLink = document.querySelector("#page-main");
+        var navLink = document.querySelector("#page-images");
         navLink.classList.add("active");
     </script>
     <?php
         session_start();
-        $models = DistrictWiseSchemes::get_with_join();
+        $models = Images::get_with_join();
      ?>
 
     <?php 
@@ -36,7 +36,7 @@
     <?php endif ?>
 
     <div class="container-sm p-0"> 
-        <a href="form.php" class="mb-3 btn btn-primary">Add Scheme Data</a>
+        <a href="form.php" class="mb-3 btn btn-primary">Add Image Data</a>
         <div class="ph-5  row justify-content-center">
             <table class="table table-striped table-hover table-bordered">
                 <thead class="table-dark">
@@ -47,10 +47,7 @@
                         <th>taluka_name</th>
                         <th>localarea_name</th>
                         <th>scheme_name</th>
-                        <th>created_by</th>
-                        <th>updated_by</th>
-                        <th>created_datetime</th>
-                        <th>updated_datetime</th>
+                        <th>url</th>
                         <th >Action</th>
                     </tr>
                 </thead>
@@ -63,13 +60,11 @@
                         <td><?= $models[$count]->taluka_name; ?></td>
                         <td><?= $models[$count]->localarea_name; ?></td>
                         <td><?= $models[$count]->scheme_name; ?></td>
-                        <td><?= $models[$count]->created_by; ?></td>
-                        <td><?= $models[$count]->updated_by; ?></td>
-                        <td><?= $models[$count]->created_datetime; ?></td>
-                        <td><?= $models[$count]->updated_datetime; ?></td>
                         <td>
-                            <a href="update.php?edit=<?=$models[$count]->id;?>" class="btn btn-success">Edit</a>
-                            <a href="DistrictWiseSchemesController.php?delete=<?= $models[$count]->id;?>" class="btn btn-danger">Delete</a>
+                            <img src="<?= $models[$count]->url; ?>" width="100px" height="100px">
+                        </td>
+                        <td>
+                            <a href="ImagesController.php?delete=<?= $models[$count]->id;?>" class="btn btn-danger">Delete</a>
                         </td>
                     </tr>
                     <?php $count += 1?>

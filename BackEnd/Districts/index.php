@@ -1,3 +1,10 @@
+<?php 
+    require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
+    require_once 'Districts.php';
+    require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../header.php')));
+    require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Users/Session.php'))); 
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,8 +15,6 @@
     <link rel="stylesheet" href="../../../bootstrap-5.1.3-dist\css\bootstrap.min.css" >
 </head>
 <body>
-    <?php require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../header.php'))); ?>
-    <?php require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Users/Session.php'))); ?>
     <?php if(Session::isLoggedIn()): ?>
         <?= nav() ?>
         <script>
@@ -17,33 +22,23 @@
             navLink.classList.add("active");
         </script>
 
-        
-
         <?php
-            require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
-            require_once 'Districts.php';
-
             session_start();
             $models = Districts::get();
         ?>
 
         <?php 
             if(isset($_SESSION['message'])):
-        ?>
-            
+        ?>  
             <div class="alert alert-<?= $_SESSION['msg_type'];?>" >
-            
                 <?php 
                     echo $_SESSION['message'];
                     unset($_SESSION['message']); 
                 ?>
             </div>
-        
         <?php endif ?>
 
-
         <div class="container-sm p-0">
-            
             <a href="form.php" class="mb-3 btn btn-primary">Add District</a>
             <div class="ph-5  row justify-content-center">
                 <table class="table table-striped table-hover table-bordered">
@@ -76,8 +71,7 @@
                         </tr> 
                         <?php $count += 1?>
                     <?php endwhile; ?>
-                </table>
-                
+                </table> 
             </div>
         </div>
     <?php else : ?>
