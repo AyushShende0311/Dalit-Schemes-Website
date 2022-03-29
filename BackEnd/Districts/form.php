@@ -10,28 +10,35 @@
 </head>
 <body>
     <?php require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../header.php'))); ?>
-    <?= nav() ?>
-    <script>
-        var navLink = document.querySelector("#page-district");
-        navLink.classList.add("active");
-    </script>
-    <?php 
-        require_once 'DistrictsController.php'; 
-    ?>
-   
-    <div class="container-lg">
-        <div class="p-5 row justify-content-center">
-            <form action="districtsController.php" method="POST">
-                <div class="mb-3">
-                    <label  class="form-label">Name</label>
-                    <input type="text" class="form-control" placeholder="Enter District Name" name='name'>
-                </div>
-                <div class="mb-3">
-                    <button type="submit"  class="btn btn-primary" name="submit">Save</button>
-                </div>
-            </form>
+    <?php require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Users/Session.php'))); ?>
+    <?php if(Session::isLoggedIn()): ?>
+        <?= nav() ?>
+        <script>
+            var navLink = document.querySelector("#page-district");
+            navLink.classList.add("active");
+        </script>
+
+
+        <?php 
+            require_once 'DistrictsController.php'; 
+        ?>
+    
+        <div class="container-lg">
+            <div class="p-5 row justify-content-center">
+                <form action="districtsController.php" method="POST" ">
+                    <div class="mb-3">
+                        <label  class="form-label">Name</label>
+                        <input type="text" class="form-control" placeholder="Enter District Name" name='name'>
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit"  class="btn btn-primary" name="submit">Save</button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
+    <?php else : ?>
+        <?php header("location:../Users/login.php"); ?>
+    <?php endif ?>
     
 </body>
 <script src="../../../bootstrap-5.1.3-dist\js\bootstrap.min.js"></script>
