@@ -128,6 +128,7 @@
             $object->updated_by = $row['updated_by'];
             return $object;
         }
+
     }
 
 ?>

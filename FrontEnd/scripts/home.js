@@ -1,5 +1,13 @@
-(()=>{
-    var list = ["पाणी पुरवठा","शौचालय","शौचालय","शौचालय","शौचालय","शौचालय","शौचालय"]
+async function a(){
+    let response = await fetch("http://localhost:8000/BackEnd/Districts/districts_api.php");
+    let data = await response.json();
+    return  data;
+}
+
+a().then(data=> init(data['data']));
+
+var init = (list)=>{
+
     var form = document.createElement("form")
     form.setAttribute("class","main-lower-form")
     var ul = document.createElement("ul")
@@ -15,7 +23,7 @@
     var a = document.querySelector(".main-lower-checkboxes")
     a.appendChild(form)
 
-})()
+}
 
 function createLi(ul,id,txt){
     var li = document.createElement("li")

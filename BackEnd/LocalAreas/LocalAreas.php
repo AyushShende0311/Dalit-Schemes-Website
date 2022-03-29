@@ -86,6 +86,7 @@
             return $result;
         }
 
+        
         public static function get_with_id($id){
             $table = LocalAreas::$table_name;
             $db = new Database();

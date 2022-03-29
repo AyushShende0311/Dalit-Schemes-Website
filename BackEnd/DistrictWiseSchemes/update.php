@@ -8,23 +8,19 @@
     <title>Document</title>
 </head>
 <body>
-    <?php 
-    session_start();
-    require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../header.php')));
-     ?>
+    <?php require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../header.php'))); ?>
     <?= nav() ?>
     <script>
-        var navLink = document.querySelector("#page-district");
+        var navLink = document.querySelector("#page-main");
         navLink.classList.add("active");
     </script>
-
+    
     <?php
  		require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
-        require_once 'Districts.php';
-
+        require_once 'DistrictWiseSchemes.php';
         $id =  $_GET['edit'];
-        if($model = Districts::get_with_id($id)){
-
+        if($model = DistrictWiseSchemes::get_with_id($id)){
+            
         }else{
             $_SESSION['message'] = "Record Not Found";
             $_SESSION['msg_type'] = "warning";
@@ -34,11 +30,11 @@
 
     <div class="container-lg">
             <div class="p-5 row justify-content-center">
-                <form action="districtsController.php" method="POST">
-                    <input type="hidden" value="<?= htmlspecialchars(serialize($model), ENT_QUOTES) ?>" name="model">
+                <form action="DistrictWiseSchemesController.php" method="POST">
+                    <input type="hidden" value="<?=htmlspecialchars(serialize($model),ENT_QUOTES)?>" name="model">
                     <div class="mb-3">
                         <label  class="form-label">Name</label>
-                        <input type="text" class="form-control" value="<?= $model->name?>" placeholder="Enter District Name" name='name'>
+                        <input type="text" class="form-control" value="<?=$model->name?>" placeholder="Enter Local Area Name" name='name'>
                     </div>
                     <div class="mb-3">
                         <button type="submit"  class="btn btn-primary" name="update">Update</button>
