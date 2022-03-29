@@ -106,6 +106,25 @@
             }
         }
 
+        public static function get_with_district_id($id){
+            $table = Taluka::$table_name;
+            $db = new Database();
+            $conn = $db->connect();
+            $query = "select * from $table where district_id = $id";
+            $result = array();
+            try{
+                $ans = $conn->query($query);
+                while($row = $ans->fetch()){
+                    $model = Taluka::load($row);
+                    array_push($result,$model);
+                }
+            }catch(PDOException $e){
+                echo $e->getMessage();
+            }
+        
+            return $result;
+        }
+
         public static function delete($id){
             $table = Taluka::$table_name;
             $db = new Database();

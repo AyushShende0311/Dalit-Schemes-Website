@@ -9,12 +9,11 @@
 <?php
    
     if(isset($_POST['submit'])){
-        $name = $_POST['name'];
         $district_id = $_POST['district'];
         $taluka_id = $_POST['taluka'];
-        $localarea_id = $_POST['localarea'];
-        $scheme_id = $_POST['schemes'];
-        if(DistrictWiseSchemes::save($name,$district_id,$taluka_id,$localarea_id,$scheme_id)){
+        $localarea_id = $_POST['area'];
+        $scheme_id = $_POST['scheme'];
+        if(DistrictWiseSchemes::save($district_id,$taluka_id,$localarea_id,$scheme_id)){
             $_SESSION['message'] = "Record has been saved";
             $_SESSION['msg_type'] = "success";
         }else{
@@ -25,14 +24,16 @@
     }
 
     if(isset($_POST['update'])){
-        $name = $_POST['name'];
         $district_id = $_POST['district'];
         $taluka_id = $_POST['taluka'];
-        $localarea_id = $_POST['localarea'];
-        $scheme_id = $_POST['schemes'];
+        $localarea_id = $_POST['area'];
+        $scheme_id = $_POST['scheme'];
         $serialized_model = $_POST["model"];
         $model = unserialize($serialized_model);
-        $model->name = $name;
+        $model->district_id = $district_id;
+        $model->taluka_id = $taluka_id;
+        $model->localarea_id = $localarea_id;
+        $model->scheme_id = $scheme_id;
         if(DistrictWiseSchemes::update($model)){
             $_SESSION['message'] = "Record has been updated";
             $_SESSION['msg_type'] = "success";

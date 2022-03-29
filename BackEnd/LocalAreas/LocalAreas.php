@@ -107,6 +107,25 @@
             }
         }
 
+        public static function get_with_taluka_id($id){
+            $table = LocalAreas::$table_name;
+            $db = new Database();
+            $conn = $db->connect();
+            $query = "select * from $table where taluka_id = $id";
+            $result = array();
+            try{
+                $ans = $conn->query($query);
+                while($row = $ans->fetch()){
+                    $model = LocalAreas::load($row);
+                    array_push($result,$model);
+                }
+            }catch(PDOException $e){
+                echo $e->getMessage();
+            }
+        
+            return $result;
+        }
+
         public static function delete($id){
             $table = LocalAreas::$table_name;
             $db = new Database();

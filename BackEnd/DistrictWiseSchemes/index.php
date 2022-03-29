@@ -39,14 +39,13 @@
 
     <div class="container-sm p-0">
         
-        <a href="form.php" class="mb-3 btn btn-primary">Add</a>
+        <a href="form.php" class="mb-3 btn btn-primary">Add Scheme Data</a>
         <div class="ph-5  row justify-content-center">
             <table class="table table-striped table-hover table-bordered">
                 <thead class="table-dark">
                     <tr>
                         <th>#</th>
                         <th>id</th>
-                        <th>name</th>
                         <th>district_id</th>
                         <th>taluka_id</th>
                         <th>localarea_id</th>
@@ -63,7 +62,6 @@
                     <tr>
                         <td> <?=$count+1?></td>
                         <td><?= $models[$count]->id; ?></td>
-                        <td><?= $models[$count]->name; ?></td>
                         <td><?= $models[$count]->district_id; ?></td>
                         <td><?= $models[$count]->taluka_id; ?></td>
                         <td><?= $models[$count]->localarea_id; ?></td>
