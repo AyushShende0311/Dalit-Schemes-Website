@@ -6,16 +6,67 @@
 ?>
 
 <?php
+    $target_dir = "../uploads/";
+    $allowed_types = array("jpeg",'jpg','png',"gif");
     if(isset($_POST['submit'])){
-        $district_id = $_POST['district'];
-        $taluka_id = $_POST['taluka'];
-        $localarea_id = $_POST['area'];
-        $scheme_id = $_POST['scheme'];
-        if(Images::save($district_id,$taluka_id,$localarea_id,$scheme_id)){
-            $_SESSION['message'] = "Record has been saved";
-            $_SESSION['msg_type'] = "success";
+        $main_id = $_POST['main_id'];
+        // Image Upload
+        if(!empty($_FILES['files']['name'])){
+
+            $file_tmpname = $_FILES['files']['tmp_name'];
+            $file_name = $_FILES['files']['name'];
+            $file_size = $_FILES['files']['size'];
+            $file_ext = pathinfo($file_name, PATHINFO_EXTENSION);
+            $filepath = $target_dir.$file_name;
+
+            if(in_array(strtolower($file_ext), $allowed_types)){
+                if(file_exists($filepath)){
+                    $filepath = $target_dir.time().$file_name;
+                    $file_name = time().$file_name;
+
+                    if(move_uploaded_file($file_tmpname, $filepath)){
+                        $root = str_replace("\\","/",$_SERVER['DOCUMENT_ROOT']);
+                        $real = str_replace( "\\","/",realpath('../uploads'));
+                        $fileUrl = (str_replace($root, "", $real))."/".$file_name;
+                        
+                        if(Images::save($main_id,$fileUrl)){
+                            $_SESSION['message'] = "Record has been saved ";
+                            $_SESSION['msg_type'] = "success";
+                        }else{   
+                            unlink("../uploads/".$file_name);                            
+                            $_SESSION['message'] = $file_name." Something went Wrong!Image cannot be added";
+                            $_SESSION['msg_type'] = "danger";
+                        }
+            
+                    }else{
+                        $_SESSION['message'] = $file_name." File Not uploaded";
+                        $_SESSION['msg_type'] = "danger";
+                    }
+                }else{
+                    if(move_uploaded_file($file_tmpname, $filepath)){
+                        $root = str_replace("\\","/",$_SERVER['DOCUMENT_ROOT']);
+                        $real = str_replace( "\\","/",realpath('../uploads'));
+                        $fileUrl = (str_replace($root, "", $real))."/".$file_name;
+
+                        if(Images::save($main_id,$fileUrl)){
+                            $_SESSION['message'] = "Record has been saved ";
+                            $_SESSION['msg_type'] = "success";
+                        }else{
+                            unlink("../uploads/".$file_name);
+                            $_SESSION['message'] = $file_name."Something went Wrong!Image cannot be added";
+                            $_SESSION['msg_type'] = "danger";
+                        }
+                    }else{
+                        $_SESSION['message'] = $file_name." File Not uploaded";
+                        $_SESSION['msg_type'] = "danger";
+                    }
+                }
+            }else{
+                $_SESSION['message'] = $file_name." File Type Not Allowed ! fail to upload file";
+                $_SESSION['msg_type'] = "danger";
+            }
         }else{
-            $_SESSION['message'] = "Something went wrong!";
+            $_SESSION['message'] = "Image Not Uploaded";
             $_SESSION['msg_type'] = "danger";
         }
         header("location:index.php");

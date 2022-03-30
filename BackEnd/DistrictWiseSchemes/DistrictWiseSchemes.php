@@ -1,6 +1,7 @@
 <?php
     require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
     require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Districts/Districts.php')));
+    require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Images/Images.php')));
     require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../LocalAreas/LocalAreas.php')));
     require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Taluka/Taluka.php')));
     require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Schemes/Schemes.php')));
@@ -159,12 +160,33 @@
             }
         }
 
-        public static function delete($id){
+        public static function get_last_id(){
             $table = DistrictWiseSchemes::$table_name;
             $db = new Database();
             $conn = $db->connect();
 
+            $query = "select * from $table 
+                        order by id desc limit 1";
+            try{
+                $ans = $conn->query($query);
+                if(count($rows = $ans->fetchAll())){
+                    $model = DistrictWiseSchemes::load($rows[0]);
+                    return $model->id;
+                }
+                else{
+                    return 0;
+                }             
+            }catch(PDOException $e){
+                return 0;
+            }
+        }
+
+        public static function delete($id){
+            $table = DistrictWiseSchemes::$table_name;
+            $db = new Database();
+            $conn = $db->connect();
             $query = "delete from $table where id=$id";
+            Images::delete_with_main_id($id);
             try{
                 $conn->query($query);
                 return 1;
@@ -172,6 +194,10 @@
             catch(PDOException $e){
                 return 0;
             }
+           
+                
+               
+            
         }
 
         public static function load($row){

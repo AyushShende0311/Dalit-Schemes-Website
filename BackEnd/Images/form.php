@@ -29,12 +29,11 @@
    <!-- Form -->
     <div class="container-lg">
         <div class="p-5 row justify-content-center">
-            <form action="ImagesController.php" method="POST">
+            <form id="form" action="ImagesController.php" method="POST" enctype="multipart/form-data">
                 <div class="mb-3">
-
                     <!-- District  -->
                     <label  class="form-label">Add to </label>
-                    <select id="district" name='district' class="form-control mb-3" >
+                    <select id="main_id" name='main_id' class="form-control mb-3" >
                         <option disable="true" value="0" disabled selected> -- Select --</option>
                         <?php foreach($implementedSchemes as $implementedScheme): ?>
                           <option value="<?= $implementedScheme->id?>" >
@@ -49,6 +48,10 @@
                     </select>
                 </div>
                 <div class="mb-3">
+                    <label  class="form-label">Upload Images</label><br>
+                    <input type="file" name="files"  enctype="multipart/form-data">
+                </div>
+                <div class="mb-3">
                     <button type="submit"  class="btn btn-primary" name="submit">Save</button>
                 </div>
             </form>
@@ -57,5 +60,5 @@
     
 </body>
 <script src="../../../bootstrap-5.1.3-dist\js\bootstrap.min.js"></script>
-<script src="DistrictWiseSchemesJs.js"></script>
+
 </html>

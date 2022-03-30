@@ -28,18 +28,26 @@ order by main.id;
 
 
 -- IMAGES Query:
-select images.id,
-                images.url, 
-                district.name as 'district_name' ,
-                taluka.name as 'taluka_name',
-                localarea.name as 'localarea_name', 
-                schemes.name as 'scheme_name',
-                images.created_datetime, 
-                images.updated_datetime,
-                images.created_by,
-                images.updated_by 
-                from images inner join main on images.main_id=main.id
-                inner join district on images.main_id=district.id
-                inner join taluka on images.main_id=taluka.id
-                inner join localarea on images.main_id=localarea.id
-                inner join schemes on images.main_id=schemes.id;
+
+select images.id, images.url,district.name as 'district_name',
+taluka.name as 'taluka_name',
+localarea.name as 'localarea_name',
+schemes.name as 'scheme_name',
+main.created_datetime,
+main.updated_datetime,
+main.created_by,
+main.updated_by
+from  
+(
+	(
+		(
+			(
+				(main inner join images on main.id=images.main_id)
+				inner join district on main.district_id=district.id
+			)
+			inner join taluka on main.taluka_id=taluka.id
+		)
+		inner join localarea on main.localarea_id=localarea.id
+	)
+	inner join schemes on main.schemes_id=schemes.id
+);
