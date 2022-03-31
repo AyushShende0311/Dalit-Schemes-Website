@@ -18,14 +18,17 @@
 
     if($districts = Districts::get()){
         foreach($districts as $district){
+            $event_array = array();
             $events_result = array();
             $events = getEventsForDistrict($district->id);
-            
+    
             foreach($events as $event){
                 $events_result['title'] = $event->event_title;
                 $events_result['detail'] = $event->event_details;
+                array_push($event_array, $events_result);
             }
-            $result[$district->name] = $events_result;
+          
+            $result[$district->name] = $event_array;
         }
     }
     $response['data'] = $result;

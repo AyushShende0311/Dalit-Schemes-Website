@@ -33,26 +33,32 @@
         <div class="container-fluid main-mid">
             <div class="container-lg">
                 <div class="floating-card-wrapper">
-                    <div class="floating-card">
-                        <div class="col-md-12 col-xs-12">
-                            <h1 class="title">News & Events</h1>
-                             <div class="clearfix" style="margin-bottom:25px"></div>
-                           <form id="frmSelectDistrict">
-                               <select id="selDistrict" class="form-control" style="width:240px;display:block;margin-right:auto;margin-left:auto;background:#7a3100;color:#fff">
-                                   <option value="0">-- Select --</option>
-                                   <option value="1">औरंगाबाद</option>                       
-                                   <option value="2">नांदेड</option>
-                                   <option value="3">परभणी</option>
-                                   <option value="4">लातूर</option>
-                                   <option value="5">उस्मानाबाद</option>
-                                   <option value="6">जालना</option>
-                                   <option value="7">हिंगोली</option>
-                               </select>
-                           </form>
-                              <div class="clearfix" style="margin-bottom:5px"></div>                        
-                             <div class="clearfix" style="margin-bottom:25px"></div>
-                         </div>
-                         <div class="floating-card-images ">
+                     <div class="floating-card">
+                        <div class="dropdown-wrapper col-md-12 col-xs-12">
+                            <h1 class="floating-card-title"><p>News & Events</p></h1>
+                            <div class="clearfix" style="margin-bottom:25px"></div>
+                            <!-- <form id="frmSelectDistrict">
+                                <select id="selDistrict" class="form-control" style="width:240px;display:block;margin-right:auto;margin-left:auto;background:#7a3100;color:#fff">
+                                    <option value="0">-- Select --</option>
+                                    <option value="1">औरंगाबाद</option>                       
+                                    <option value="2">नांदेड</option>
+                                    <option value="3">परभणी</option>
+                                    <option value="4">लातूर</option>
+                                    <option value="5">उस्मानाबाद</option>
+                                    <option value="6">जालना</option>
+                                    <option value="7">हिंगोली</option>
+                                </select>
+                            </form> -->
+                            <div id="distAreas">
+                                <hr>
+                                 <div class="text-center">
+                                    <!--areas details form district.js  -->
+                                </div>
+                            </div>     
+                            <div class="clearfix" style="margin-bottom:5px"></div>                        
+                            <div class="clearfix" style="margin-bottom:25px"></div>
+                        </div> 
+                        <div class="floating-card-images ">
                             <div><img src="./Assets/images/aboutus_img1.png" ></div>
                             <div><img src="./Assets/images/aboutus_img2.png"></div>
                             <div><img src="./Assets/images/aboutus_img3.png" ></div>
@@ -88,5 +94,7 @@
     </div>
 </body>
 <script src="./scripts/add_bootstrap.js"></script>
+<script src="./scripts/news-and-events.js"></script>
 <script src="./scripts/add_common_style_sheet.js"></script>
+
 </html>

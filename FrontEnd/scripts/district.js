@@ -23,9 +23,9 @@ var createDropDown = (districts)=>{
     form.setAttribute("id","frmSelectDistrict")
     var select = document.createElement("select")
     select.setAttribute('id',"sel-district")
-    select.setAttribute("class","form-control")
+    select.setAttribute("class","form-control my-form-control")
     var value = 0
-
+    
     var option = document.createElement("option")
     option.innerHTML = "-- Select District --";
     option.disabled = true;
@@ -39,32 +39,24 @@ var createDropDown = (districts)=>{
         option.setAttribute("value",value)
         select.appendChild(option)
         value += 1
-     })    
-     form.appendChild(select)
-     var dropdown_wrapper = document.querySelector(".dropdown-wrapper")
-     dropdown_wrapper.insertBefore(form,dropdown_wrapper.children[2])
+    })    
+    form.appendChild(select)
+    var dropdown_wrapper = document.querySelector(".dropdown-wrapper")
+    dropdown_wrapper.insertBefore(form,dropdown_wrapper.children[2])
 
 }
 
 function handler(talukas) {
     var select = document.querySelector("#sel-district")
     select.addEventListener("change",()=>{
-        var distAreas = document.querySelector("#distAreas")
-        
+        var distAreas = document.querySelector("#distAreas")        
         // set Visibity to visible
-
         distAreas.style.display = "block"
-
-        var distAreasDiv = document.querySelector("#distAreas > .text-center")
-        
+        var distAreasDiv = document.querySelector("#distAreas > .text-center")     
         // removed all elements
-
-        distAreasDiv.innerHTML = ''
-        
+        distAreasDiv.innerHTML = ''      
         // selected dropdown value
-
-        var selectedDistrict = select.options[select.selectedIndex].text
-        
+        var selectedDistrict = select.options[select.selectedIndex].text      
         // created title
 
         var p = document.createElement("p")
@@ -100,3 +92,4 @@ function createP(parent,taluka, area){
 
 
 init();
+
