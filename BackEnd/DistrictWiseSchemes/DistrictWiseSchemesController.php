@@ -17,8 +17,7 @@
         $localarea_id = $_POST['area'];
         $scheme_id = $_POST['scheme'];
         if(DistrictWiseSchemes::save($district_id,$taluka_id,$localarea_id,$scheme_id)){
-         
-
+            
             if(!empty(array_filter($_FILES['files']['name']))){
                 foreach($_FILES['files']['tmp_name'] as $key=>$value){
                     $file_tmpname = $_FILES['files']['tmp_name'][$key];
