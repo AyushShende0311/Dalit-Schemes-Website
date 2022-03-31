@@ -141,7 +141,16 @@ a {
     z-index: 2000;
 }
 
+@media (max-width:768px){
+    .floater{
+        flex-direction: column;
+    }
 
+    .floating-buttons-info-images > .col-md-6{
+        padding: 10px 0;
+        
+    }
+}
 
 
 

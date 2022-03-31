@@ -99,6 +99,7 @@ function createLi(ul,toggle_id,scheme,parent2,talukas){
 
 function createFloatingTabsInfo(parentDiv,talukas,scheme){
     var div = document.createElement("div")
+    div.setAttribute("id",scheme)
     var div1 = document.createElement("div")
     div1.setAttribute("class","floating-buttons-info-images row")
     div.appendChild(div1)

@@ -111,7 +111,9 @@
     }
 
     .header-upper > .row{
+        position: relative;
         flex-wrap: wrap;
+        margin-right:0px;
     } 
 
     .header-title{
@@ -123,6 +125,6 @@
 
     .header-name{
         justify-content: center;
-       
     }
+
 }

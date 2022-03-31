@@ -82,6 +82,7 @@ body{
     }
 
     .floating-card{
+        padding: 10px;
         padding-bottom: 94px;
     }
 
