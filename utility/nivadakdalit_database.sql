@@ -11,6 +11,7 @@ DROP TABLE IF EXISTS `taluka`;
 DROP TABLE IF EXISTS `district`;
 DROP TABLE IF EXISTS `users`;
 DROP TABLE IF EXISTS `session`;
+DROP TABLE IF EXISTS `events`;
 
 CREATE TABLE district (
 	`id` int AUTO_INCREMENT,
@@ -89,12 +90,25 @@ CREATE TABLE session (
   `id` INT NOT NULL DEFAULT 1,
   `user_name` VARCHAR(45) NULL,
   `is_logged_in` INT NULL,
-  PRIMARY KEY (`id`));
-
-
+  PRIMARY KEY (`id`)
+);
 
 CREATE TABLE users (
   `id` INT NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(45) NULL,
   `password` VARCHAR(300) NULL,
-  PRIMARY KEY (`id`));
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE event (
+	`id` int AUTO_INCREMENT,
+	`event_title` varchar(50) NOT NULL,
+    `event_details` varchar(200) NOT NULL,
+    `district_id` int NOT NULL,
+    PRIMARY KEY(`id`),
+    `created_datetime` datetime NOT NULL,
+	`updated_datetime` datetime NOT NULL,
+	`created_by` varchar(50) NOT NULL,
+	`updated_by` varchar(50) NOT NULL,
+	FOREIGN KEY (`district_id`) REFERENCES `district` (`id`) ON DELETE CASCADE
+);

@@ -30,7 +30,10 @@
                             <a class='nav-link' id='page-images' href='../Images/index.php'>Images</a>
                         </li>
                         <li class='nav-item'>
-                            <a class='nav-link' id='page-scheme' href='../index.php'>Logout</a>
+                            <a class='nav-link' id='page-events' href='../Events/index.php'>Events</a>
+                        </li>
+                        <li class='nav-item'>
+                            <a class='nav-link'  href='../index.php'>Logout</a>
                         </li>
                     </ul>
                 </div>
