@@ -19,8 +19,67 @@ body{
     margin: 0px;
 }
 
+
+.floating-card-wrapper
+{
+    position: relative;
+}
+
+.floating-card-images
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-bottom: 50px;
+}
+
+.floating-card-images > div >img{
+    height: 110px;
+    width: 170px;
+}
+
+
+
+.floating-card
+{
+    background-color: white;
+    position: relative;
+    z-index:100;
+    top: -120px;
+    padding-bottom: 64px;
+    min-width:100%;
+    height: auto;
+    padding: 0 120px;
+}
+
+.floating-card-title{
+    padding-top: 70px;
+}
+
+.floating-card-title > p
+{
+    display: flex;
+    font-size: 38px;
+    color: orangered;
+    justify-content: center;
+    font-weight: 400;
+    margin-top:30px 35px ;
+}
+
+
 @media (max-width : 768px){
     body{
         font-size: 10px;
     }
+
+    .floating-card{
+        padding-bottom: 94px;
+    }
+
+    .floating-card-images{
+        justify-content: center;
+    }
+
 }
+
+
