@@ -1,10 +1,11 @@
 <?php 
     
     require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
-    require_once 'Schemes.php';
+    require_once '../Schemes/Schemes.php';
     require_once '../Images/Images.php';
     require_once '../Taluka/Taluka.php';
     require_once '../Districts/Districts.php';
+    require_once 'DistrictWiseSchemes.php';
 
     $response = array();
     $result = array();
@@ -22,9 +23,9 @@
         return $result;
     }
 
-    function getTalukaOfScheme($scheme_id){
+    function getTalukaOfScheme($scheme_id,$district_id){
         $result = array();
-        if($talukas = Taluka::get_with_scheme_id($scheme_id)){
+        if($talukas = DistrictWiseSchemes::get_taluka_from_scheme($scheme_id,$district_id)){
             foreach($talukas as $taluka){
                 array_push($result, $taluka);
             }
@@ -32,14 +33,12 @@
         return $result;
     }
 
-    function getImagesOfTaluka($taluka_id){
-        $result = array();
-        if($images = Images::get_with_taluka_id($taluka_id)){
-            foreach($images as $image){
-                array_push($result, $image);
-            }
+    function getImagesOfTaluka($district_id, $scheme_id,$taluka_id){
+        
+        if($images = DistrictWiseSchemes::get_images_of_taluka($district_id, $scheme_id,$taluka_id)){
+            return $images;
         }
-        return $result;
+        return array();
     }
 
     if($districts = Districts::get()){
@@ -49,22 +48,17 @@
 
             foreach($schemes as $scheme){
                 $talukas_result = array();
-                // $talukas = getTalukaOfScheme($scheme->id);
-
-                // foreach($talukas as $taluka){
-                //     $images_result = array();
-                //     $images = getImagesOfTaluka($taluka->id);
-
-                //     foreach($images as $image){
-                //         array_push($images_result, $image->url);
-                //     }
-                //     $talukas_result[$taluka->name] = $images_result;
-                // }
-                // $schemes_result[$scheme->name] = $talukas_result;
+                $talukas = getTalukaOfScheme($scheme->id, $district->id);
+                foreach($talukas as $taluka){
+                    $images_result = array();
+                    $images = getImagesOfTaluka($district->id,$scheme->id,$taluka->id);
+                    $talukas_result[$taluka->name] = $images;
+                }
+                $schemes_result[$scheme->name] = $talukas_result;
             }
-            // $result[$district->name] = $schemes_result;
+            $result[$district->name] = $schemes_result;
         }
     }
-    // $response['data'] = $result;
-    // echo json_encode($response);
+    $response['data'] = $result;
+    echo json_encode($response);
 ?>
