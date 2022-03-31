@@ -56,12 +56,10 @@ function handler(updates){
         distAreasDiv.innerHTML = ''
         // selected dropdown value
         var selectedDistrict = select.options[select.selectedIndex].text
-        
 
-        console.log(updates[selectedDistrict])
-        // .forEach(update=>{
-            createPara(distAreasDiv,updates[selectedDistrict]['detail'],updates[selectedDistrict]['title'])
-        // })
+        updates[selectedDistrict].forEach(update=>{
+            createPara(distAreasDiv,update['detail'],update['title'])
+        })
     })
 }
 
