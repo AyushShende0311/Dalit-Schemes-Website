@@ -90,7 +90,6 @@ function getTalukas_update(selecteedTalukaId){
     });
 }
 
-
 async function get(url){
     var response = await fetch(url);
     var data = await response.json();

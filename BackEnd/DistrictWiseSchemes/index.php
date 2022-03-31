@@ -20,29 +20,22 @@
         navLink.classList.add("active");
     </script>
     <?php
-       
-
         session_start();
         $models = DistrictWiseSchemes::get_with_join();
      ?>
 
     <?php 
         if(isset($_SESSION['message'])):
-     ?>
-        
+     ?>    
         <div class="alert alert-<?= $_SESSION['msg_type'];?>" >
-        
             <?php 
                 echo $_SESSION['message'];
                 unset($_SESSION['message']); 
             ?>
-        </div>
-    
+        </div>  
     <?php endif ?>
 
-
-    <div class="container-sm p-0">
-        
+    <div class="container-sm p-0"> 
         <a href="form.php" class="mb-3 btn btn-primary">Add Scheme Data</a>
         <div class="ph-5  row justify-content-center">
             <table class="table table-striped table-hover table-bordered">
@@ -82,7 +75,6 @@
                     <?php $count += 1?>
                 <?php endwhile; ?>
             </table>
-            
         </div>
     </div>
 </body>

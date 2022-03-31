@@ -6,8 +6,7 @@ function setAttributes(el, attrs) {
       el.setAttribute(key, attrs[key]);
     }
 }
-(()=>{
-    
+(()=>{ 
     addCss(document.head, "main.css")
     addCss(document.head, "common.css")
     addCss(document.head, "header.css")
@@ -23,8 +22,7 @@ function setAttributes(el, attrs) {
 function addCss(parent, fileName){
     var link = document.createElement("link")
     setAttributes(link,{"rel": "stylesheet", "href" : stylesheetPath+fileName})
-    parent.appendChild(link)
-    
+    parent.appendChild(link) 
 }
 
 function addScript(parent,fileName){

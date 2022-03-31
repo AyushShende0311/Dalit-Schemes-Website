@@ -11,7 +11,6 @@
             $conn = $db->connect();
             $table = Session::$table_name ;
             $query = "insert into $table values(default, '$username', 1)";
-
             try{
                $conn->query($query);
                return 1;
@@ -52,7 +51,6 @@
                 return 0;
             }
         }
-
         public static function getUserName(){
             $db = new Database();
             $conn = $db->connect();

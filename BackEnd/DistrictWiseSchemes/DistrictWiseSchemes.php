@@ -1,6 +1,7 @@
 <?php
     require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
     require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Districts/Districts.php')));
+    require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Images/Images.php')));
     require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../LocalAreas/LocalAreas.php')));
     require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Taluka/Taluka.php')));
     require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Schemes/Schemes.php')));
@@ -9,6 +10,7 @@
         public static $table_name = "main";
         public $id;
         public $name;
+        public $url;
         public $district_id;
         public $district_name;
         public $taluka_id;
@@ -26,7 +28,6 @@
             $table = DistrictWiseSchemes::$table_name;
             $db = new Database();
             $conn = $db->connect();
-            
             $created_datetime = date("y/m/d H:i:s");
             $updated_datetime = date("y/m/d H:i:s");
             $updated_by = 'admin';
@@ -52,7 +53,6 @@
                 echo $e->getMessage();
                 return 0;
             }
-           
             return 0;
         }
 
@@ -69,10 +69,8 @@
             updated_by='$model->updated_by', 
             updated_datetime='$model->updated_datetime' 
             where id=$model->id ";
-
             $db = new Database();
             $conn = $db->connect();
-
             try{
                 $conn->query($query);
                 return 1;
@@ -99,7 +97,6 @@
             }catch(PDOException $e){
                 echo $e->getMessage();
             }
-           
             return $result;
         }
 
@@ -142,16 +139,14 @@
             }catch(PDOException $e){
                 echo $e->getMessage();
             }
-           
             return $result;
         }
-
-
-        
+  
         public static function get_with_id($id){
             $table = DistrictWiseSchemes::$table_name;
             $db = new Database();
             $conn = $db->connect();
+
             $query = "select * from $table where id=$id";
             try{
                 $ans = $conn->query($query);
@@ -160,8 +155,28 @@
                 }
                 else{
                     return 0;
+                }             
+            }catch(PDOException $e){
+                return 0;
+            }
+        }
+
+        public static function get_last_id(){
+            $table = DistrictWiseSchemes::$table_name;
+            $db = new Database();
+            $conn = $db->connect();
+
+            $query = "select * from $table 
+                        order by id desc limit 1";
+            try{
+                $ans = $conn->query($query);
+                if(count($rows = $ans->fetchAll())){
+                    $model = DistrictWiseSchemes::load($rows[0]);
+                    return $model->id;
                 }
-                
+                else{
+                    return 0;
+                }             
             }catch(PDOException $e){
                 return 0;
             }
@@ -171,9 +186,8 @@
             $table = DistrictWiseSchemes::$table_name;
             $db = new Database();
             $conn = $db->connect();
-
             $query = "delete from $table where id=$id";
-            
+            Images::delete_with_main_id($id);
             try{
                 $conn->query($query);
                 return 1;
@@ -214,6 +228,38 @@
             $object->updated_by = $row['updated_by'];
             return $object;
         }
+
+        //return scheme model
+        public static function get_schemes_for_district($district_id){
+            $table = DistrictWiseSchemes::$table_name;
+            $table_schemes = Schemes::$table_name;
+            $table_districts = Districts::$table_name;
+            $db = new Database();
+            $conn = $db->connect();
+            $result = array();
+
+            $query = "select 
+            distinct $table_schemes.id,
+            $table_schemes.name , 
+            $table_schemes.created_datetime,
+            $table_schemes.updated_datetime, 
+            $table_schemes.created_by, 
+            $table_schemes.updated_by
+            from (($table inner join $table_schemes on $table.schemes_id=$table_schemes.id)
+            inner join $table_districts on $table.district_id=$district_id);";
+           
+            try{
+                $ans = $conn->query($query);
+                while($row = $ans->fetch()){
+                    $model = Schemes::load($row);
+                    array_push($result,$model);
+                }
+            }catch(PDOException $e){
+                echo $e->getMessage();
+            }       
+            return $result;
+        }
+
     }
 
 ?>

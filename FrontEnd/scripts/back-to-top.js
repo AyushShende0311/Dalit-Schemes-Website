@@ -1,4 +1,3 @@
-
 (()=>{
     var topBtn = document.createElement("a")
     topBtn.setAttribute("class","to-top")
@@ -10,7 +9,6 @@
     var target = document.querySelector("body")
     target.appendChild(topBtn)
 })()
-
 
 const toTop = document.querySelector(".to-top");
 window.addEventListener("scroll", ()=>{

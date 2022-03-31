@@ -1,3 +1,11 @@
+<?php 
+    require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../header.php')));
+    require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Users/Session.php'))); 
+    require_once 'TalukaController.php';
+    require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,8 +17,7 @@
 </head>
 <body>
     
-    <?php require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../header.php'))); ?>
-    <?php require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Users/Session.php'))); ?>
+    
     <?php if(Session::isLoggedIn()): ?>
         <?= nav() ?>
         <script>
@@ -19,14 +26,12 @@
         </script>
 
         <?php 
-            require_once 'TalukaController.php';
-            require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
             $db = new Database();
             $conn= $db->connect();
             $query = "select * from district";
             $district = $conn->query($query);
         ?>
-    
+        
         <div class="container-lg">
             <div class="p-5 row justify-content-center">
                 <form action="TalukaController.php" method="POST">
@@ -46,7 +51,6 @@
                     </div>
                 </form>
             </div>
-
         </div>
     <?php else : ?>
         <?php header("location:../Users/login.php"); ?>

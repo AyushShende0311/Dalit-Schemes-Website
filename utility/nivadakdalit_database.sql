@@ -83,7 +83,7 @@ CREATE TABLE images (
 	`updated_datetime` datetime NOT NULL,
 	`created_by` varchar(50) NOT NULL,
 	`updated_by` varchar(50) NOT NULL,
-    FOREIGN KEY (`main_id`) REFERENCES `main` (`id`)
+    FOREIGN KEY (`main_id`) REFERENCES `main` (`id`) ON DELETE CASCADE
 );
 
 CREATE TABLE session (

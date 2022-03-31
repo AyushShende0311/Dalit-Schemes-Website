@@ -4,6 +4,7 @@
     require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
     require_once 'LocalAreas.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +23,6 @@
             navLink.classList.add("active");
         </script>
 
-        
         <?php
             session_start();
             $models = LocalAreas::get_with_join();
@@ -30,10 +30,8 @@
 
         <?php 
             if(isset($_SESSION['message'])):
-        ?>
-            
+        ?>  
             <div class="alert alert-<?= $_SESSION['msg_type'];?>" >
-            
                 <?php 
                     echo $_SESSION['message'];
                     unset($_SESSION['message']); 
@@ -42,9 +40,7 @@
         
         <?php endif ?>
 
-
         <div class="container-sm p-0">
-            
             <a href="form.php" class="mb-3 btn btn-primary">Add LocalArea</a>
             <div class="ph-5  row justify-content-center">
                 <table class="table table-striped table-hover table-bordered">
@@ -80,7 +76,6 @@
                         <?php $count += 1?>
                     <?php endwhile; ?>
                 </table>
-                
             </div>
         </div>
     <?php else : ?>

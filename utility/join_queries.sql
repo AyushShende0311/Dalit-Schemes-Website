@@ -25,3 +25,36 @@ inner join taluka on main.taluka_id=taluka.id
 inner join schemes on main.schemes_id=schemes.id
 inner join localarea on main.localarea_id=localarea.id
 order by main.id;
+
+
+-- IMAGES Query:
+
+select images.id, images.url,district.name as 'district_name',
+taluka.name as 'taluka_name',
+localarea.name as 'localarea_name',
+schemes.name as 'scheme_name',
+main.created_datetime,
+main.updated_datetime,
+main.created_by,
+main.updated_by
+from  
+(
+	(
+		(
+			(
+				(main inner join images on main.id=images.main_id)
+				inner join district on main.district_id=district.id
+			)
+			inner join taluka on main.taluka_id=taluka.id
+		)
+		inner join localarea on main.localarea_id=localarea.id
+	)
+	inner join schemes on main.schemes_id=schemes.id
+);
+
+
+-- get schmese for district
+select distinct schemes.id,schemes.name , 
+schemes.created_datetime, schemes.updated_datetime, schemes.created_by, schemes.updated_by
+from ((main inner join schemes on main.schemes_id=schemes.id)
+inner join district on main.district_id=1); --add district.id here at 1

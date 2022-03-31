@@ -1,13 +1,16 @@
-async function a(){
-    let response = await fetch("http://localhost:8000/BackEnd/Districts/districts_api.php");
+async function get(url){
+    let response = await fetch(url);
     let data = await response.json();
     return  data;
 }
 
-a().then(data=> init(data['data']));
+function init(){
+    var url ="http://localhost:8000/BackEnd/Schemes/Schemes_api.php";
+    get(url).then(data=> createCheckBox(data['data']));
+}
 
-var init = (list)=>{
 
+var createCheckBox = (list)=>{
     var form = document.createElement("form")
     form.setAttribute("class","main-lower-form")
     var ul = document.createElement("ul")
@@ -18,11 +21,9 @@ var init = (list)=>{
         createLi(ul,"chbox"+value,scheme)
         value += 1
     })
-
     form.appendChild(ul)
     var a = document.querySelector(".main-lower-checkboxes")
     a.appendChild(form)
-
 }
 
 function createLi(ul,id,txt){
@@ -31,6 +32,7 @@ function createLi(ul,id,txt){
     createLiInnerContainer(li,id,txt)
     ul.appendChild(li)
 }
+
 function createLiInnerContainer(li,id,txt){
     var div=document.createElement('div')
     createInput(div,id)
@@ -52,3 +54,5 @@ function createLabel(parentDiv,id,txt){
     label.appendChild(txt)
     parentDiv.appendChild(label)
 }
+
+init();

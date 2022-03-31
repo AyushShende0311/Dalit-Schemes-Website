@@ -2,6 +2,7 @@
     require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
     require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Users/Session.php')));
     require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Districts/Districts.php')));
+    require_once "../DistrictWiseSchemes/DistrictWiseSchemes.php";
 
     class Taluka{
         public static $table_name = "taluka";
@@ -40,8 +41,7 @@
                     return 1;
                 }catch(PDOException $e){
                     return 0;
-                }
-            
+                }           
                 return 0;
         }
 
@@ -84,8 +84,7 @@
                 }
             }catch(PDOException $e){
                 echo $e->getMessage();
-            }
-        
+            }        
             return $result;
         }
 
@@ -101,8 +100,7 @@
                 }
                 else{
                     return 0;
-                }
-                
+                }              
             }catch(PDOException $e){
                 return 0;
             }
@@ -122,8 +120,25 @@
                 }
             }catch(PDOException $e){
                 echo $e->getMessage();
-            }
-        
+            }       
+            return $result;
+        }
+
+        public static function get_with_scheme_id($id){
+            $table = DistrictWiseSchemes::$table_name;
+            $db = new Database();
+            $conn = $db->connect();
+            $query = "select * from $table where schemes_id = $id";
+            $result = array();
+            try{
+                $ans = $conn->query($query);
+                while($row = $ans->fetch()){
+                    $model = DistrictWiseSchemes::load($row);
+                    array_push($result,$model);
+                }
+            }catch(PDOException $e){
+                echo $e->getMessage();
+            }       
             return $result;
         }
 
@@ -135,7 +150,6 @@
             $conn = $db->connect();
 
             $result = array();
-            
             $query = "select 
             $table.id, 
             $table.name , 
@@ -148,7 +162,6 @@
             from $table inner join $table_district 
             where $table.district_id=$table_district.id
             order by $table.id";
-
             try{
                 $ans = $conn->query($query);
                 while($row = $ans->fetch()){
@@ -176,29 +189,7 @@
                 return 0;
             }
         }
-
-        // public static function get_district_taluka(){
-        //     $table = Taluka::$table_name;
-        //     $db = new Database();
-        //     $conn = $db->connect();
-        //     $result = array();
-
-        //     $query = "select taluka.id, taluka.name , district.name , taluka.created_datetime, taluka.updated_datetime, taluka.created_by, taluka.updated_by
-        //     from  taluka inner join district on  taluka.id=district.id";
-        //     echo $query;
-        //     try{
-        //         $ans = $conn->query($query);
-        //         while($row = $ans->fetch()){
-        //             $model = Taluka::load($row);
-        //             array_push($result, $model);
-        //         }
-        //     }catch(PDOException $e){
-        //         echo $e->getMessage();
-        //     }
-           
-        //     return $result;
-        // }
-
+        
         public static function load($row){
             $object = new Taluka();
             $object->id = $row['id'];

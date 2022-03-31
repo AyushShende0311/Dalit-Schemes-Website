@@ -85,7 +85,6 @@
             }catch(PDOException $e){
                 echo $e->getMessage();
             }
-           
             return $result;
         }
 
@@ -118,7 +117,6 @@
             }catch(PDOException $e){
                 echo $e->getMessage();
             }
-           
             return $result;
         }
 
@@ -135,8 +133,7 @@
                 }
                 else{
                     return 0;
-                }
-                
+                } 
             }catch(PDOException $e){
                 return 0;
             }
@@ -157,7 +154,6 @@
             }catch(PDOException $e){
                 echo $e->getMessage();
             }
-        
             return $result;
         }
 

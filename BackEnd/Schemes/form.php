@@ -1,4 +1,8 @@
-
+<?php 
+    require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../header.php')));
+    require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Users/Session.php'))); 
+    require_once 'SchemesController.php'; 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,19 +13,13 @@
     <title>Document</title>
 </head>
 <body>
-    <?php require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../header.php'))); ?>
-    <?php require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Users/Session.php'))); ?>
     <?php if(Session::isLoggedIn()): ?>
         <?= nav() ?>
-        <?php 
-            require_once 'SchemesController.php'; 
-        ?>    
         <script>
             var navLink = document.querySelector("#page-scheme");
             navLink.classList.add("active");
         </script>
 
-    
         <div class="container-lg">
             <div class="p-5 row justify-content-center">
                 <form action="schemesController.php" method="POST">
@@ -37,8 +35,7 @@
         </div>
     <?php else : ?>
         <?php header("location:../Users/login.php"); ?>
-    <?php endif ?>
-        
+    <?php endif ?>     
 </body>
 <script src="../../../bootstrap-5.1.3-dist\js\bootstrap.min.js"></script>
 </html>

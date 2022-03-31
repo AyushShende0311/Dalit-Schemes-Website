@@ -1,6 +1,7 @@
 <?php
     require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
     require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Users/Session.php')));
+    require_once "../DistrictWiseSchemes/DistrictWiseSchemes.php";
 
     class Schemes{
         public static $table_name = "schemes";
@@ -18,7 +19,6 @@
             $this->created_datetime = date("y/m/d H:i:s");
             $this->updated_datetime = date("y/m/d H:i:s");
         }
-
         public static function save($name){
             $table = Schemes::$table_name;
             $db = new Database();
@@ -38,14 +38,12 @@
             '$created_by',
             '$updated_by'
             )";
-
             try{
                 $conn->query($query);
                 return 1;
             }catch(PDOException $e){
                 return 0;
-            }
-           
+            }  
             return 0;
         }
 
@@ -53,16 +51,15 @@
             $table = Schemes::$table_name;
             $model->updated_by = Session::getUserName();
             $model->updated_datetime = date("y/m/d H:i:s");
+            
             $query = " update $table
             set 
             name='$model->name', 
             updated_by='$model->updated_by', 
             updated_datetime='$model->updated_datetime' 
             where id=$model->id ";
-
             $db = new Database();
             $conn = $db->connect();
-
             try{
                 $conn->query($query);
                 return 1;
@@ -88,7 +85,6 @@
             }catch(PDOException $e){
                 echo $e->getMessage();
             }
-           
             return $result;
         }
 
@@ -104,20 +100,20 @@
                 }
                 else{
                     return 0;
-                }
-                
+                }     
             }catch(PDOException $e){
                 return 0;
             }
         }
+
+     
 
         public static function delete($id){
             $table = Schemes::$table_name;
             $db = new Database();
             $conn = $db->connect();
 
-            $query = "delete from $table where id=$id";
-            
+            $query = "delete from $table where id=$id"; 
             try{
                 $conn->query($query);
                 return 1;

@@ -20,7 +20,7 @@
             $updated_datetime = date("y/m/d H:i:s");
             $updated_by = $curent_username;
             $created_by = $curent_username;
-
+            
             $query = "
             insert into $table values(
             default, 
@@ -37,7 +37,6 @@
             }catch(PDOException $e){
                 return 0;
             }
-           
             return 0;
         }
 
@@ -52,10 +51,8 @@
             updated_by='$model->updated_by', 
             updated_datetime='$model->updated_datetime' 
             where id=$model->id ";
-
             $db = new Database();
             $conn = $db->connect();
-
             try{
                 $conn->query($query);
                 return 1;
@@ -81,7 +78,6 @@
             }catch(PDOException $e){
                 echo $e->getMessage();
             }
-           
             return $result;
         }
 
@@ -89,6 +85,7 @@
             $table = Districts::$table_name;
             $db = new Database();
             $conn = $db->connect();
+            
             $query = "select * from $table where id=$id";
             try{
                 $ans = $conn->query($query);
@@ -97,8 +94,7 @@
                 }
                 else{
                     return 0;
-                }
-                
+                }         
             }catch(PDOException $e){
                 return 0;
             }
@@ -109,8 +105,7 @@
             $db = new Database();
             $conn = $db->connect();
 
-            $query = "delete from $table where id=$id";
-            
+            $query = "delete from $table where id=$id"; 
             try{
                 $conn->query($query);
                 return 1;
@@ -130,7 +125,5 @@
             $object->updated_by = $row['updated_by'];
             return $object;
         }
-
     }
-
 ?>
