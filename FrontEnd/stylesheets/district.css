@@ -34,29 +34,13 @@
     padding-top: 40px;
 }
 
-
-.floating-card-images
-{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding-bottom: 50px;
-}
-.floating-card
-{
-    height: auto;
-    padding: 0 120px;
-}
 .floating-card-para
 {
     display: block;
     margin: 40px 0;
 }
 
-.floating-card-images > div >img{
-    height: 110px;
-    width: 170px;
-}
+
 
 .form-control{
     width:240px;
@@ -86,13 +70,6 @@
 }
 
 @media (max-width:768px){
-    .floating-card{
-        padding: 20px;
-    }
-
-    .floating-card-images{
-        justify-content: center;
-    }
 
     .mid-lower-para2 > p{
         padding: 0;

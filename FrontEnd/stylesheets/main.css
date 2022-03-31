@@ -110,22 +110,7 @@
     background-color: #5E2600;
 }
 
-.floating-card-wrapper
-{
-    position: relative;
-}
 
-
-
-.floating-card
-{
-    background-color: white;
-    position: relative;
-    z-index:100;
-    top: -120px;
-    padding-bottom: 64px;
-    min-width:100%;
-}
 
 .below-floating-card{
     position: relative;
@@ -270,12 +255,6 @@
         padding: 0;
     }
 
-    .floating-card{
-        padding-bottom: 94px;
-    }
-
-   
-    
     .right-arrow  img{
         width: 64px;
         height: 64px;
