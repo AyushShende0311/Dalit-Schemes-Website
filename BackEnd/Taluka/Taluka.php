@@ -2,6 +2,7 @@
     require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
     require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Users/Session.php')));
     require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Districts/Districts.php')));
+    require_once "../DistrictWiseSchemes/DistrictWiseSchemes.php";
 
     class Taluka{
         public static $table_name = "taluka";
@@ -115,6 +116,24 @@
                 $ans = $conn->query($query);
                 while($row = $ans->fetch()){
                     $model = Taluka::load($row);
+                    array_push($result,$model);
+                }
+            }catch(PDOException $e){
+                echo $e->getMessage();
+            }       
+            return $result;
+        }
+
+        public static function get_with_scheme_id($id){
+            $table = DistrictWiseSchemes::$table_name;
+            $db = new Database();
+            $conn = $db->connect();
+            $query = "select * from $table where schemes_id = $id";
+            $result = array();
+            try{
+                $ans = $conn->query($query);
+                while($row = $ans->fetch()){
+                    $model = DistrictWiseSchemes::load($row);
                     array_push($result,$model);
                 }
             }catch(PDOException $e){

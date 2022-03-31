@@ -1,11 +1,16 @@
-async function a(){
-    let response = await fetch("http://localhost:8000/BackEnd/Schemes/Schemes_api.php");
+async function get(url){
+    let response = await fetch(url);
     let data = await response.json();
     return  data;
 }
-a().then(data=> init(data['data']));
 
-var init = (list)=>{
+function init(){
+    var url ="http://localhost:8000/BackEnd/Schemes/Schemes_api.php";
+    get(url).then(data=> createCheckBox(data['data']));
+}
+
+
+var createCheckBox = (list)=>{
     var form = document.createElement("form")
     form.setAttribute("class","main-lower-form")
     var ul = document.createElement("ul")
@@ -49,3 +54,5 @@ function createLabel(parentDiv,id,txt){
     label.appendChild(txt)
     parentDiv.appendChild(label)
 }
+
+init();

@@ -10,6 +10,7 @@
         public static $table_name = "main";
         public $id;
         public $name;
+        public $url;
         public $district_id;
         public $district_name;
         public $taluka_id;
@@ -194,10 +195,6 @@
             catch(PDOException $e){
                 return 0;
             }
-           
-                
-               
-            
         }
 
         public static function load($row){
@@ -231,6 +228,38 @@
             $object->updated_by = $row['updated_by'];
             return $object;
         }
+
+        //return scheme model
+        public static function get_schemes_for_district($district_id){
+            $table = DistrictWiseSchemes::$table_name;
+            $table_schemes = Schemes::$table_name;
+            $table_districts = Districts::$table_name;
+            $db = new Database();
+            $conn = $db->connect();
+            $result = array();
+
+            $query = "select 
+            distinct $table_schemes.id,
+            $table_schemes.name , 
+            $table_schemes.created_datetime,
+            $table_schemes.updated_datetime, 
+            $table_schemes.created_by, 
+            $table_schemes.updated_by
+            from (($table inner join $table_schemes on $table.schemes_id=$table_schemes.id)
+            inner join $table_districts on $table.district_id=$district_id);";
+           
+            try{
+                $ans = $conn->query($query);
+                while($row = $ans->fetch()){
+                    $model = Schemes::load($row);
+                    array_push($result,$model);
+                }
+            }catch(PDOException $e){
+                echo $e->getMessage();
+            }       
+            return $result;
+        }
+
     }
 
 ?>

@@ -1,6 +1,7 @@
 <?php
     require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
     require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Users/Session.php')));
+    require_once "../DistrictWiseSchemes/DistrictWiseSchemes.php";
 
     class Schemes{
         public static $table_name = "schemes";
@@ -104,6 +105,8 @@
                 return 0;
             }
         }
+
+     
 
         public static function delete($id){
             $table = Schemes::$table_name;

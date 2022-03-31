@@ -51,3 +51,10 @@ from
 	)
 	inner join schemes on main.schemes_id=schemes.id
 );
+
+
+-- get schmese for district
+select distinct schemes.id,schemes.name , 
+schemes.created_datetime, schemes.updated_datetime, schemes.created_by, schemes.updated_by
+from ((main inner join schemes on main.schemes_id=schemes.id)
+inner join district on main.district_id=1); --add district.id here at 1

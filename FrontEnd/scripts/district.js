@@ -1,27 +1,36 @@
-var districts = ["औरंगाबाद","नांदेड","परभणी","लातूर"];
-var talukas = {
-    "औरंगाबाद" : {
-        "t1":["a1","a2"],
-        "t2":["a1","a2"]
-    },
-    "नांदेड":{
-        "t1":["a1","a2"],
-    },
-    "परभणी":{
-        "t1":["a1","a2"],
-    },
-    "लातूर":{
-        "t1":["a1","a2"],
-    }
-};
 
-(()=>{
+function init(){
+    var url = "http://localhost:8000/BackEnd/Districts/Districts_api.php"
+    get(url).then(data=>{
+        createDropDown(data['data']);
+    });
+
+    url = "http://localhost:8000/BackEnd/Districts/Districts_taluka_api.php";
+    get(url).then(data=>{
+        handler(data['data']);
+    });
+}
+
+
+async function get(url){
+    var response = await fetch(url);
+    var data = await response.json();
+    return data;
+}
+
+var createDropDown = (districts)=>{
     var form = document.createElement("form")
     form.setAttribute("id","frmSelectDistrict")
     var select = document.createElement("select")
     select.setAttribute('id',"sel-district")
     select.setAttribute("class","form-control")
     var value = 0
+
+    var option = document.createElement("option")
+    option.innerHTML = "-- Select District --";
+    option.disabled = true;
+    option.selected = true;
+    select.appendChild(option);
 
     districts.forEach(district=>{
         var option = document.createElement("option")
@@ -35,7 +44,7 @@ var talukas = {
      var dropdown_wrapper = document.querySelector(".dropdown-wrapper")
      dropdown_wrapper.insertBefore(form,dropdown_wrapper.children[2])
 
-})()
+}
 
 function handler(talukas) {
     var select = document.querySelector("#sel-district")
@@ -89,4 +98,5 @@ function createP(parent,taluka, area){
     parent.appendChild(p)
 }
 
-handler(talukas)
+
+init();
