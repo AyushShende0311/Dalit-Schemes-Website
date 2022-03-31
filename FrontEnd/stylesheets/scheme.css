@@ -78,11 +78,70 @@ a {
     position: relative;
 }
 
-.floating-buttons-info-images > div > img{
-    width: auto;
-    height: auto;
+.floating-buttons-info-images{
+    padding: 0px 30px;
 }
 
-.floating-buttons-info-images{
-    padding: 30px;
+
+.floating-buttons-info-images > div  img{
+    width: auto;
+    height: auto;
+    border-radius: 10px;
+
 }
+
+
+
+.floating-buttons-info-images > .col-md-6{
+    position: relative;
+    
+}
+
+
+.floating-buttons-info-images > .col-md-6 > a > div{
+    position: relative;
+    border-radius: 10px;
+}
+
+.floating-buttons-info-images > .col-md-6 > a > div::before{
+    content: "";
+    position: absolute;
+    min-width: 100%;
+    min-height: 100%;
+    background-color: #5e2600de;
+    z-index: 1000;
+    border-radius: 10px;
+    display: none;
+}
+
+.floating-buttons-info-images > .col-md-6 > a:hover > div::before{
+    display: block;
+}
+
+.overlaysymbol{
+    position: absolute;
+    min-width: 100%;
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    overflow: hidden;
+}
+
+.overlaysymbol > p{
+    margin: 0;
+    color: white;
+    font-weight: bold;
+    font-size: 50px;    
+}
+
+.floating-buttons-info-images > .col-md-6 > a:hover .overlaysymbol{
+    display: flex;
+    z-index: 2000;
+}
+
+
+
+
+

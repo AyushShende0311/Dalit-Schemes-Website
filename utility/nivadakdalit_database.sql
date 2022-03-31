@@ -88,6 +88,7 @@ CREATE TABLE images (
 
 CREATE TABLE session (
   `id` INT NOT NULL DEFAULT 1,
+  s_id int not null,
   `user_name` VARCHAR(45) NULL,
   `is_logged_in` INT NULL,
   PRIMARY KEY (`id`)

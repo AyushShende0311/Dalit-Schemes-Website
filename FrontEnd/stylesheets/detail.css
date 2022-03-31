@@ -1,0 +1,29 @@
+.details{
+    margin: 50px 0;
+}
+
+.details > p{
+   text-align: center;
+   color: rgba(128, 128, 128, 0.612);
+}
+
+.dname{
+   display: flex;
+   justify-content: center;
+   margin-bottom: 20px;
+}
+.dname > div{
+    margin: 0 auto;
+    background-color: rgb(245, 91, 35);
+    padding: 0px 30px;
+    border-radius: 50px;
+    color: white;
+}
+
+.dname  h5{
+    display: inline;
+    text-align: center;
+    color: white;
+    
+    
+}
