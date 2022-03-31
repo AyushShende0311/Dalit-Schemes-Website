@@ -58,3 +58,10 @@ select distinct schemes.id,schemes.name ,
 schemes.created_datetime, schemes.updated_datetime, schemes.created_by, schemes.updated_by
 from ((main inner join schemes on main.schemes_id=schemes.id)
 inner join district on main.district_id=1); --add district.id here at 1
+
+-- get taluka name from district_id and scheme_id
+select distinct taluka.id, main.district_id,taluka.name, 
+schemes.created_datetime, schemes.updated_datetime, schemes.created_by, schemes.updated_by
+from (((main inner join taluka on main.taluka_id=taluka.id)
+inner join schemes on main.schemes_id=schemes.id)
+inner join district on main.district_id=3) where main.schemes_id=1;

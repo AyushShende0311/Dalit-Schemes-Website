@@ -260,6 +260,74 @@
             return $result;
         }
 
+        //return taluka model
+        public static function get_taluka_from_scheme($scheme_id,$district_id){
+            $table = DistrictWiseSchemes::$table_name;
+            $table_schemes = Schemes::$table_name;
+            $table_districts = Districts::$table_name;
+            $table_taluka = Taluka::$table_name;
+            $db = new Database();
+            $conn = $db->connect();
+            $result = array();
+
+            $query = "select 
+            distinct $table_taluka.id, 
+            $table.district_id,
+            $table_taluka.name, 
+            $table_schemes.created_datetime, 
+            $table_schemes.updated_datetime, 
+            $table_schemes.created_by, 
+            $table_schemes.updated_by
+            from (
+                        (
+                            (
+                                $table inner join $table_taluka on $table.taluka_id=$table_taluka.id
+                            )
+                            inner join  $table_schemes on $table.schemes_id= $table_schemes.id
+                        )
+                    inner join $table_districts on $table.district_id=$district_id
+                ) 
+            where $table.schemes_id=$scheme_id;";
+            
+            try{
+                $ans = $conn->query($query);
+                while($row = $ans->fetch()){
+                    $model = Taluka::load($row);
+                    array_push($result,$model);
+                }
+            }catch(PDOException $e){
+                echo $e->getMessage();
+            }       
+            return $result;
+        }
+
+        // returns image url
+        public static function get_images_of_taluka($district_id,$scheme_id,$taluka_id){
+            $table = DistrictWiseSchemes::$table_name;
+            $table_schemes = Schemes::$table_name;
+            $table_districts = Districts::$table_name;
+            $table_taluka = Taluka::$table_name;
+            $db = new Database();
+            $conn = $db->connect();
+            $result = array();
+
+            $query = "select distinct images.url
+            from ((((main inner join taluka on main.taluka_id=taluka.id)
+            inner join schemes on main.schemes_id=schemes.id)
+            inner join images on images.main_id=main.id)
+            inner join district on main.district_id=$district_id) where main.schemes_id=$scheme_id and main.taluka_id=$taluka_id; ";
+            
+            try{
+                $ans = $conn->query($query);
+                while($row = $ans->fetch()){
+                    array_push($result,$row['url']);
+                }
+            }catch(PDOException $e){
+                echo $e->getMessage();
+            }       
+            return $result;
+        }
+
     }
 
 ?>
