@@ -111,25 +111,6 @@
             }
         }
 
-        // public static function get_with_district_id($id){
-        //     $table = Event::$table_name;
-        //     $db = new Database();
-        //     $conn = $db->connect();
-        //     $query = "select * from $table where district_id = $id";
-        //     $result = array();
-        //     try{
-        //         $ans = $conn->query($query);
-        //         while($row = $ans->fetch()){
-        //             $model = Event::load($row);
-        //             array_push($result,$model);
-        //         }
-        //     }catch(PDOException $e){
-        //         echo $e->getMessage();
-        //     }
-        
-        //     return $result;
-        // }
-
         public static function get_with_join(){
             $table = Event::$table_name;
             $table_district = Districts::$table_name;
@@ -206,6 +187,25 @@
             $object->created_by = $row['created_by'];
             $object->updated_by = $row['updated_by'];
             return $object;
+        }
+
+        public static function get_events_for_district($id){
+            $table = Event::$table_name;
+            $db = new Database();
+            $conn = $db->connect();
+            $query = "select * from $table where district_id = $id";
+            $result = array();
+            try{
+                $ans = $conn->query($query);
+                while($row = $ans->fetch()){
+                    $model = Event::load($row);
+                    array_push($result,$model);
+                }
+            }catch(PDOException $e){
+                echo $e->getMessage();
+            }
+        
+            return $result;
         }
 
     }
