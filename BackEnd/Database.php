@@ -2,7 +2,7 @@
 
 class Database{
     private $host = 'localhost';
-    private $db_name = 'nivadakdalit';
+    private $db_name = 'rnasri_dalit_vasti';
     private $username = 'root';
     private $password = 'root';
     private $conn;

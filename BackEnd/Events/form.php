@@ -1,3 +1,9 @@
+<?php 
+    require_once str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../header.php')); 
+    require_once str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Users/Session.php'));
+    require_once 'EventsController.php';
+    require_once str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php'));
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,8 +15,7 @@
 </head>
 <body>
     
-    <?php require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../header.php'))); ?>
-    <?php require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Users/Session.php'))); ?>
+   
     <?php if(Session::isLoggedIn()): ?>
         <?= nav() ?>
         <script>
@@ -19,8 +24,6 @@
         </script>
 
         <?php 
-            require_once 'EventsController.php';
-            require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
             $db = new Database();
             $conn= $db->connect();
             $query = "select * from district";

@@ -1,3 +1,10 @@
+<?php 
+    require_once str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Users/Session.php')); 
+    require_once str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../header.php'));
+    require_once str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php'));
+    require_once str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Districts/Districts.php'));
+    require_once 'Event.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,11 +15,11 @@
     <title>Document</title>
 </head>
 <body>
-<?php require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Users/Session.php'))); ?>
+
 <?php if(Session::isLoggedIn()): ?>
         <?php
         session_start(); 
-        require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../header.php'))); ?>
+         ?>
         <?= nav() ?>
         <script>
             var navLink = document.querySelector("#page-Event");
@@ -20,10 +27,6 @@
         </script>
 
         <?php
-            require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
-            require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Districts/Districts.php')));
-            require_once 'Event.php';
-
             $id =  $_GET['edit'];
             if($model = Event::get_with_id($id)){
 

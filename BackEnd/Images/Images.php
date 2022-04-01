@@ -1,10 +1,10 @@
 <?php
-    require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
-    require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Districts/Districts.php')));
-    require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../LocalAreas/LocalAreas.php')));
-    require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Taluka/Taluka.php')));
-    require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Schemes/Schemes.php')));
-    require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../DistrictWiseSchemes/DistrictWiseSchemes.php')));
+    require_once str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php'));
+    require_once str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Districts/Districts.php'));
+    require_once str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../LocalAreas/LocalAreas.php'));
+    require_once str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Taluka/Taluka.php'));
+    require_once str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Schemes/Schemes.php'));
+    require_once str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../DistrictWiseSchemes/DistrictWiseSchemes.php'));
     require_once "../DistrictWiseSchemes/DistrictWiseSchemes.php";
 
     class Images{

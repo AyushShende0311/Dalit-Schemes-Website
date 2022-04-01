@@ -1,9 +1,9 @@
 <?php 
-        require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../header.php')));
-        require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Districts/Districts.php')));
-        require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Schemes/Schemes.php')));
+        require_once str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../header.php'));
+        require_once str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Districts/Districts.php'));
+        require_once str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Schemes/Schemes.php'));
         require_once 'DistrictWiseSchemesController.php'; 
-        require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
+        require_once str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php'));
 ?>
 
 <!DOCTYPE html>

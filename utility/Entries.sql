@@ -1,4 +1,4 @@
-USE nivadakdalit;
+USE `rnasri_dalit_vasti`;
 
 INSERT INTO district VALUES(1,'nashik','2021-12-23 18:24:44','2021-12-23 18:24:44','admin','admin');
 INSERT INTO district VALUES(2,'Pune','2021-12-23 18:24:44','2021-12-23 18:24:44','admin','admin');

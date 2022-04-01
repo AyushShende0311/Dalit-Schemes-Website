@@ -1,5 +1,5 @@
 <?php
-    require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
+    require_once str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php'));
     class Users{
         public static $table_name = "users";
         public static $is_logged_in = 0;
@@ -10,7 +10,9 @@
         public static function login($username, $password){
             if($currentUser = Users::getUser($username)){
                 $verify = password_verify($password, $currentUser->password);
-                if($verify) return 1;
+                if($verify){
+                    return 1;
+                } 
                 else return 0;
             }else{
                 return 0;

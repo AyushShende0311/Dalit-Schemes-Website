@@ -1,3 +1,10 @@
+<?php 
+    require_once str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Users/Session.php')); 
+    require_once str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../header.php'));
+    require_once str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php'));
+    require_once 'Districts.php';
+?>  
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,13 +15,14 @@
     <title>Document</title>
 </head>
 <body>
-    <?php require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Users/Session.php'))); ?>  
+    
     <?php if(Session::isLoggedIn()): ?>
         <?php 
         session_start();
-        require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../header.php')));
         ?>
+        
         <?= nav() ?>
+
         <script>
             var navLink = document.querySelector("#page-district");
             navLink.classList.add("active");
@@ -22,9 +30,6 @@
 
     
         <?php
-            require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
-            require_once 'Districts.php';
-
             $id =  $_GET['edit'];
             if($model = Districts::get_with_id($id)){
 

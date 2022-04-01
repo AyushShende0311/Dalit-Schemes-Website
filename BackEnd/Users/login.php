@@ -12,7 +12,9 @@
 </head>
 <body>
     <?php 
-        Session::delete();
+        if(Session::isLoggedIn()){
+            header("location:./index.php");
+        }
     ?>
         <div class='bg-secondary container-fluid mb-4'>
             <div class='container-sm'>

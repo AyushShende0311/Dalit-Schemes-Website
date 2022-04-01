@@ -1,11 +1,11 @@
 
 function init(){
-    var url = "http://localhost:8000/BackEnd/Districts/Districts_api.php"
+    var url = "../../BackEnd/Districts/Districts_api.php"
     get(url).then(data=>{
         createDropDown(data['data']);
     });
 
-    url = "http://localhost:8000/BackEnd/Districts/Districts_taluka_api.php";
+    url = "../../BackEnd/Districts/Districts_taluka_api.php";
     get(url).then(data=>{
         handler(data['data']);
     });

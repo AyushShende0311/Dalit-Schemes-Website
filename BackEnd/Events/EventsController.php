@@ -1,7 +1,7 @@
 
 <?php
   require_once 'Event.php';
-  require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
+  require_once str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php'));
   session_start();
   $db = new  Database();
   $conn = $db->connect();

@@ -1,6 +1,6 @@
 <?php
   require_once 'LocalAreas.php';
-  require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
+  require_once str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php'));
   session_start();
 ?>
 

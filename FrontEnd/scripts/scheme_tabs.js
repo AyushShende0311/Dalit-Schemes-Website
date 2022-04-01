@@ -6,12 +6,12 @@ var taluka_name = "";
 
 
 function init(){
-    var url = "http://localhost:8000/BackEnd/Districts/Districts_api.php"
+    var url = "../../BackEnd/Districts/Districts_api.php"
     get(url).then(data=>{
         createDropDown(data['data']);
     });
 
-    url = "http://localhost:8000/BackEnd/DistrictWiseSchemes/main_api.php";
+    url = "../../BackEnd/DistrictWiseSchemes/main_api.php";
     get(url).then(data=>{
         handler(data['data']);
     });
@@ -110,6 +110,9 @@ function createFloatingTabsInfo(parentDiv,talukas,scheme){
 }
 
 function createImage(parentDiv,image,scheme, taluka){
+    if(!image){
+        return
+    }
     var div = document.createElement("div")
     var a = document.createElement("a");
     var url = "./detail.html" + "?" + "dn=" + district_name + "&" + "sn=" + scheme +"&"+ "tn="+taluka;

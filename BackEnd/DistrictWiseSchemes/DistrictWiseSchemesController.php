@@ -1,7 +1,7 @@
 <?php
   require_once 'DistrictWiseSchemes.php';
-  require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Images/Images.php')));
-  require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
+  require_once str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Images/Images.php'));
+  require_once str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php'));
   session_start();
 ?>
 
@@ -17,14 +17,11 @@
         $localarea_id = $_POST['area'];
         $scheme_id = $_POST['scheme'];
         if(DistrictWiseSchemes::save($district_id,$taluka_id,$localarea_id,$scheme_id)){
-<<<<<<< HEAD
-            
-=======
 
             $main_id = DistrictWiseSchemes::get_last_id();
             
             //upload files
->>>>>>> f18afbe5bc2937f324216c4463ce68ad3b032be5
+
             if(!empty(array_filter($_FILES['files']['name']))){
 
                 foreach($_FILES['files']['tmp_name'] as $key=>$value){

@@ -76,8 +76,8 @@
     color: forestgreen; 
     border-right: 0.5px solid grey;   
     font-weight: 500;
-
 }
+
 .navbar-nav > a:last-child{
     border-right: none;
 }
@@ -90,6 +90,18 @@
 }
 
 @media (max-width : 768px){
+
+    .navbar-nav > a{
+        padding-left: 0px;
+        font-size: 1rem;
+    }
+
+    #navbarNavAltMarkup{
+        padding: 0px;
+        padding-top: 20px;
+    }
+    
+
     #header-photo1{
         width: 60px;
         height: 70px;

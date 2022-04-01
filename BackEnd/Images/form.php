@@ -1,11 +1,11 @@
 <?php 
-        require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../header.php')));
-        require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Districts/Districts.php')));
-        require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Schemes/Schemes.php')));
-        require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../DistrictWiseSchemes/DistrictWiseSchemes.php')));
+        require_once str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../header.php'));
+        require_once str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Districts/Districts.php'));
+        require_once str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Schemes/Schemes.php'));
+        require_once str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../DistrictWiseSchemes/DistrictWiseSchemes.php'));
         require_once 'ImagesController.php'; 
         require_once 'Images.php';
-        require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php')));
+        require_once str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../Database.php'));
 ?>
 
 <!DOCTYPE html>

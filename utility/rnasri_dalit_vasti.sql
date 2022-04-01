@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS nivadakdalit;
+DROP DATABASE IF EXISTS `rnasri_dalit_vasti`;
  
-CREATE DATABASE nivadakdalit;
-USE nivadakdalit;
+CREATE DATABASE `rnasri_dalit_vasti`;
+USE `rnasri_dalit_vasti`;
 
 DROP TABLE IF EXISTS `images`;
 DROP TABLE IF EXISTS `main`;
@@ -87,10 +87,11 @@ CREATE TABLE images (
 );
 
 CREATE TABLE session (
-  `id` INT NOT NULL DEFAULT 1,
-  s_id int not null,
+  `id` INT NOT NULL AUTO_INCREMENT,
+   `s_id` int not null,
   `user_name` VARCHAR(45) NULL,
   `is_logged_in` INT NULL,
+   `expiry` datetime NOT NULL,
   PRIMARY KEY (`id`)
 );
 

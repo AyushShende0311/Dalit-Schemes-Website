@@ -5,7 +5,7 @@ async function get(url){
 }
 
 function init(){
-    var url ="http://localhost:8000/BackEnd/Schemes/Schemes_api.php";
+    var url ="../../BackEnd/Schemes/Schemes_api.php";
     get(url).then(data=> createCheckBox(data['data']));
 }
 

@@ -1,5 +1,5 @@
 function init(){
-    var url = "http://localhost:8000/BackEnd/DistrictWiseSchemes/main_api.php";
+    var url = "../../BackEnd/DistrictWiseSchemes/main_api.php";
     get(url).then(data=>{
         var url = new URL(window.location.href);
         var dname = url.searchParams.get("dn");

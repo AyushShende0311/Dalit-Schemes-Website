@@ -1,10 +1,10 @@
 function init(){
-    var url = "http://localhost:8000/BackEnd/Districts/Districts_api.php"
+    var url = "../../BackEnd/Districts/Districts_api.php"
     get(url).then(data=>{
         createDropDown(data['data']);
     });
 
-    url = "http://localhost:8000/BackEnd/Events/Event_api.php";
+    url = "../../BackEnd/Events/Event_api.php";
     get(url).then(data=>{
         console.log(data['data']);
         handler(data['data']);
