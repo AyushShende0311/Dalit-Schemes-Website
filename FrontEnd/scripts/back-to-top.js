@@ -19,5 +19,3 @@ window.addEventListener("scroll", ()=>{
         toTop.classList.remove('arrow-active');
     }
 })
-
-
