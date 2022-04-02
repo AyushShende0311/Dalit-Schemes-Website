@@ -42,5 +42,10 @@
                 </div>    
       `
       body.insertAdjacentHTML("afterbegin", header)
+
+      var url = window.location.pathname
+      var filename = "./" + url.substring(url.lastIndexOf('/')+1)
+      var target = document.querySelector("[href = '"+ filename + "']")
+      target.classList.add("active")
 })()
 

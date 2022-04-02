@@ -78,6 +78,10 @@
     font-weight: 500;
 }
 
+.navbar-nav .active{
+    color: red;
+}
+
 .navbar-nav > a:last-child{
     border-right: none;
 }
