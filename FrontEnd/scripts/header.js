@@ -29,11 +29,11 @@
                             </button>
                             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                                 <div class="navbar-nav">
-                                <a class="nav-link1" aria-current="page" href="./home.html">HOME</a>
-                                <a class="nav-link2" href="./about-us.html">ABOUT US</a>
-                                <a class="nav-link3" href="./scheme.html">SCHEMES</a>
-                                <a class="nav-link4" href="./district-wise-covered-areas.html">DISTRICT WISE COVERED AREAS</a>
-                                <a class="nav-link5" href="./news&events.html">NEWS & UPDATES</a>
+                                <a id="home" aria-current="page" href="./home.html">HOME</a>
+                                <a id="about_us" href="./about-us.html">ABOUT US</a>
+                                <a id="schemes" href="./scheme.html">SCHEMES</a>
+                                <a id="district_wise_covered_areas" href="./district-wise-covered-areas.html">DISTRICT WISE COVERED AREAS</a>
+                                <a id="news_and_updates" href="./news&events.html">NEWS & UPDATES</a>
                                 </div>
                             </div>
                             </div>
