@@ -7,7 +7,7 @@
                             <div class="row">
                             
                                 <div class="header-title col-lg-4 col-sm-12">
-                                    <img src="./Assets/logo/Social Justice.png">
+                                    <img src="./Assets/logo/Social_Justice.png">
                                 </div>
                                 <div class="header-name col-lg-4 col-sm-12"><p>निवडक दलित वस्ती सुधार योजना</p></div>
                                 <div class="header-helpline col-lg-4 col-sm-12"><p>Helpline (Toll Free) : 2546000, 1800-3458-4578</p></div>
