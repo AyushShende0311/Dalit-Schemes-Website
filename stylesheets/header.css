@@ -92,6 +92,19 @@
 #navbarNavAltMarkup{
     padding-left: 40px;
 }
+.language-selector{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.language-selector label{
+    color: white;
+}
+.language-selector select{
+    background-color: #5E2600;
+    color: white;
+    border: none;
+}
 
 @media (max-width : 768px){
 

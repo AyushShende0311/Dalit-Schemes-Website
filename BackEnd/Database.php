@@ -4,8 +4,8 @@ class Database
 {
     private $host = 'localhost';
     private $db_name = 'rnasri_dalit_vasti';
-    private $username = 'ehid_db';
-    private $password = 'ehid_db@123';
+    private $username = 'root';
+    private $password = 'root';
     private $conn;
 
     public function connect()

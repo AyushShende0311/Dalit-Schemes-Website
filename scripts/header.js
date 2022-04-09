@@ -4,6 +4,15 @@
                 <div class="container-fluid header-wrapper m-0 p-0">
                     <div class="header-upper-wrapper">
                         <div class="header-upper container-md">
+                            <div class="language-selector">
+                                <form>
+                                    <label>Language :  </label>
+                                    <select>
+                                        <option> Marathi </option>
+                                        <option> English </option>
+                                    </select>
+                                </form>
+                            </div>
                             <div class="row">
                             
                                 <div class="header-title col-lg-4 col-sm-12">

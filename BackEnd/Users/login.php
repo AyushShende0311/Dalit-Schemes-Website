@@ -1,5 +1,4 @@
-<?php require_once 'Session.php';
-?>
+<?php require_once 'Session.php';?>
 
 <!DOCTYPE html>
 <html lang="en">
