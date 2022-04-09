@@ -16,6 +16,7 @@ function setAttributes(el, attrs) {
     addScript(document.body,"header.js")
     addScript(document.body,"footer.js")
     addScript(document.body,"back-to-top.js")
+    addScript(document.body,"languageHandler.js")
 
 })()
 
