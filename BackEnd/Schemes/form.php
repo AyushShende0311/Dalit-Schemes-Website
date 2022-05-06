@@ -28,6 +28,10 @@
                         <input type="text" class="form-control" placeholder="Enter Scheme Name" name='name'>
                     </div>
                     <div class="mb-3">
+                        <label  class="form-label">Name In Marathi</label>
+                        <input type="text" class="form-control" placeholder="Enter Scheme Name in Marathi" name='name_mr'>
+                    </div>
+                    <div class="mb-3">
                         <button type="submit"  class="btn btn-primary" name="submit">Save</button>
                     </div>
                 </form>

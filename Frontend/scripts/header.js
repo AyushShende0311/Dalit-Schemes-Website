@@ -6,10 +6,10 @@
                         <div class="header-upper container-md">
                             <div class="language-selector">
                                 <form>
-                                    <label>Language :  </label>
+                                    <label id="language">Language :  </label>
                                     <select>
-                                        <option> Marathi </option>
-                                        <option> English </option>
+                                        <option value="mr"> मराठी </option>
+                                        <option value="en"> English </option>
                                     </select>
                                 </form>
                             </div>
@@ -18,8 +18,8 @@
                                 <div class="header-title col-lg-4 col-sm-12">
                                     <img src="./Assets/logo/Social_Justice.png">
                                 </div>
-                                <div class="header-name col-lg-4 col-sm-12"><p>निवडक दलित वस्ती सुधार योजना</p></div>
-                                <div class="header-helpline col-lg-4 col-sm-12"><p>Helpline (Toll Free) : 2546000, 1800-3458-4578</p></div>
+                                <div class="header-name col-lg-4 col-sm-12" id="nav-title"><p>निवडक दलित वस्ती सुधार योजना</p></div>
+                                <div class="header-helpline col-lg-4 col-sm-12" ><p id="nav-helpline">Helpline (Toll Free) : 2546000, 1800-3458-4578</p></div>
                                 <div id="header-photo1">
                                     <img src="./Assets/images/Dr.Ambedkar.png">
                                 </div>

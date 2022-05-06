@@ -5,8 +5,16 @@ async function get(url){
 }
 
 function init(){
-    var url ="../../BackEnd/Schemes/Schemes_api.php";
+    var lang;
+    if(localStorage.getItem("lang")){
+      lang = localStorage.getItem("lang");
+    }else{
+       lang = 'en';
+    }
+    var url ="../../BackEnd/Schemes/Schemes_api.php" + "?lang="+lang;
     get(url).then(data=> createCheckBox(data['data']));
+    
+    
 }
 
 
