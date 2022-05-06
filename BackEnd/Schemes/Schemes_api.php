@@ -24,6 +24,15 @@
             $response['data'] = $result;
             echo json_encode($response);
         }
+    }else{
+        $models = Schemes::get();
+        $response = array();
+        $result = array();
+        foreach($models as $model){
+            array_push($result, $model->name);
+        }
+        $response['data'] = $result;
+        echo json_encode($response);
     }
    
     

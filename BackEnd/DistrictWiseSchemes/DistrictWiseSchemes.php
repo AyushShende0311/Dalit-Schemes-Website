@@ -241,6 +241,7 @@
             $query = "select 
             distinct $table_schemes.id,
             $table_schemes.name , 
+            $table_schemes.name_mr , 
             $table_schemes.created_datetime,
             $table_schemes.updated_datetime, 
             $table_schemes.created_by, 

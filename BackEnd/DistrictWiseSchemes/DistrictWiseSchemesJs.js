@@ -1,7 +1,7 @@
 function getTalukas(){
     var district_selector = document.getElementById("district");
     var district_id = district_selector.options[district_selector.selectedIndex].value;
-    var url = "http://localhost:8000/BackEnd/Taluka/taluka_api.php" + "?district_id=" + district_id; 
+    var url = "../Taluka/taluka_api.php" + "?district_id=" + district_id; 
     get(url).then(data=>{
         districts = data['data'];
         var taluka_selector = document.getElementById("taluka");
@@ -32,7 +32,7 @@ function getTalukas(){
 function getLocalAreas(){
     var taluka_selector = document.getElementById("taluka");
     var taluka_Id = taluka_selector.options[taluka_selector.selectedIndex].value;
-    var url = "http://localhost:8000/BackEnd/LocalAreas/LocalAreas_api.php" + "?taluka_id=" + taluka_Id; 
+    var url = "../LocalAreas/LocalAreas_api.php" + "?taluka_id=" + taluka_Id; 
     get(url).then(data=>{
         talukas = data['data'];
         var area_selector = document.getElementById("area");  
@@ -54,7 +54,7 @@ function getLocalAreas(){
 }
 
 function getLocalAreas_update(selectedLocalAreaId,taluka_id){
-    var url = "http://localhost:8000/BackEnd/LocalAreas/LocalAreas_api.php" + "?taluka_id=" + taluka_id; 
+    var url = "../LocalAreas/LocalAreas_api.php" + "?taluka_id=" + taluka_id; 
     get(url).then(data=>{
         talukas = data['data'];
         var area_selector = document.getElementById("area");  
@@ -73,7 +73,7 @@ function getLocalAreas_update(selectedLocalAreaId,taluka_id){
 function getTalukas_update(selecteedTalukaId){
     var district_selector = document.getElementById("district");
     var district_id = district_selector.options[district_selector.selectedIndex].value;
-    var url = "http://localhost:8000/BackEnd/Taluka/taluka_api.php" + "?district_id=" + district_id; 
+    var url = "../Taluka/taluka_api.php" + "?district_id=" + district_id; 
     get(url).then(data=>{
         districts = data['data'];
         var taluka_selector = document.getElementById("taluka");
