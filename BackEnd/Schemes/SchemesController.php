@@ -10,7 +10,8 @@
    
     if(isset($_POST['submit'])){
         $name = $_POST['name'];
-        if(Schemes::save($name)){
+        $name_mr = $_POST['name_mr'];
+        if(Schemes::save($name,$name_mr)){
             $_SESSION['message'] = "Record has been saved";
             $_SESSION['msg_type'] = "success";
         }else{
@@ -22,9 +23,11 @@
 
     if(isset($_POST['update'])){
         $name = $_POST['name'];
+        $name_mr = $_POST['name_mr'];
         $serailized_model = $_POST['model'];
         $model = unserialize($serailized_model);
         $model->name = $name;
+        $model->name_mr = $name_mr;
         if(Schemes::update($model)){
             $_SESSION['message'] = "Record has been updated";
             $_SESSION['msg_type'] = "success";

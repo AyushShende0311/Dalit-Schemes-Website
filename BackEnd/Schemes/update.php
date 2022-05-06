@@ -18,8 +18,8 @@
     
     <?php if(Session::isLoggedIn()): ?>
         <?php 
-        session_start();
-        require_once $_SERVER['DOCUMENT_ROOT'].(str_replace($_SERVER['DOCUMENT_ROOT'], " ", realpath('../header.php'))); ?>
+        session_start(); ?>
+       
         <?= nav() ?>
         <script>
             var navLink = document.querySelector("#page-scheme");
@@ -42,6 +42,10 @@
                         <div class="mb-3">
                             <label  class="form-label">Scheme Name</label>
                             <input type="text" class="form-control" value="<?= $model->name?>" placeholder="Enter Scheme Name" name='name'>
+                        </div>
+                        <div class="mb-3">
+                            <label  class="form-label">Name In Marathi</label>
+                            <input type="text" class="form-control" value="<?= $model->name_mr?>" placeholder="Enter Scheme Name in Marathi" name='name_mr'>
                         </div>
                         <div class="mb-3">
                             <button type="submit"  class="btn btn-primary" name="update">Update</button>

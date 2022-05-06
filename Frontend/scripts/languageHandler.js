@@ -1,16 +1,18 @@
 (()=>{
+    onLanguageChange();
     var option;
     var url;
-    if(language = localStorage.getItem("lang")){  
-        url = "./scripts/languages/"+language+".json";
-        option = document.querySelector(".language-selector option[value='" + language + "']");
-
+    var language;
+    if(localStorage.getItem("lang")){  
+        language = localStorage.getItem("lang");
     }else{
-        url = "./scripts/languages/en.json";
-        option = document.querySelector(".language-selector option[value='en']");
+        language = 'en';
     }
-    option.setAttribute("selected","true");
-    onLanguageChange();
+    url = "./scripts/languages/"+language+".json";
+    option = document.querySelector(".language-selector option[value='" + language + "']");
+    if(option){
+        option.setAttribute("selected","true");
+    }
 
     get(url).then(lang=>{
         setData(lang);
@@ -39,9 +41,11 @@ function setData(lang){
 
 function onLanguageChange(){
     var selector = document.querySelector(".language-selector select");
-    selector.addEventListener("change", ()=>{
-        var selectedLang = selector.options[selector.selectedIndex].value;
-        localStorage.setItem("lang",selectedLang);
-        location.reload();
-    })
+    if(selector){
+        selector.addEventListener("change", ()=>{
+            var selectedLang = selector.options[selector.selectedIndex].value;
+            localStorage.setItem("lang",selectedLang);
+            location.reload();
+        })
+    }
 }

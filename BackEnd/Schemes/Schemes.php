@@ -7,6 +7,7 @@
         public static $table_name = "schemes";
         public $id;
         public $name;
+        public $name_mr;
         public $created_datetime;
         public $updated_datetime;
         public $created_by;
@@ -19,7 +20,7 @@
             $this->created_datetime = date("y/m/d H:i:s");
             $this->updated_datetime = date("y/m/d H:i:s");
         }
-        public static function save($name){
+        public static function save($name, $name_mr){
             $table = Schemes::$table_name;
             $db = new Database();
             $conn = $db->connect();
@@ -33,6 +34,7 @@
             insert into $table values(
             default, 
             '$name', 
+            '$name_mr',
             '$created_datetime', 
             '$updated_datetime', 
             '$created_by',
@@ -55,6 +57,7 @@
             $query = " update $table
             set 
             name='$model->name', 
+            name_mr = '$model->name_mr',
             updated_by='$model->updated_by', 
             updated_datetime='$model->updated_datetime' 
             where id=$model->id ";
@@ -127,6 +130,7 @@
             $object = new Schemes();
             $object->id = $row['id'];
             $object->name = $row['name'];
+            $object->name_mr = $row['name_mr'];
             $object->created_datetime = $row['created_datetime'];
             $object->updated_datetime = $row['updated_datetime'];
             $object->created_by = $row['created_by'];
